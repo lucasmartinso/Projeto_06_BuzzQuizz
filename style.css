@@ -4,6 +4,7 @@ body {
     width: 100%; 
     height: 100%; 
     font-family: 'Roboto', sans-serif; 
+    background-color: #E5E5E5;
 } 
 
 * { 
@@ -64,3 +65,157 @@ body {
 .seusQuizzes > button:hover{ 
     cursor: pointer;
 }
+
+/*COMECEI A MEXER DAQUI*/
+.esconder{
+    display: none;
+}
+.escondido{display: none;}
+
+.tela3{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+   
+   
+  
+ 
+}
+.criacao{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 40px;
+    margin-bottom: 27px;
+   
+}
+.criacao h1{
+    font-size: 23px;
+    color:black;
+    font-weight: bold;
+
+}
+.infos{
+
+    width: 600px;
+    height: 256px;
+    background-color: #ffffff;
+    margin: 0 auto;
+   
+    
+}
+.infos > input { 
+    margin-left: 16px;
+    margin-right: 20px;
+    margin-top: 9px;
+    width: 564px;
+    height: 46px;
+    font-size: 19px;
+    border-radius: 5px;
+    border:1px solid #D1D1D1;
+    box-sizing: border-box;
+}
+.infos :first-child{
+    margin-top: 21px;
+}
+.infos :last-child{
+    margin-bottom: 24px;
+}
+button{
+   
+    background-color:#EC362D;
+    width: 369px;
+    height: 54px;
+    border-radius: 15px;
+    font-size: 21px;
+    color: #fff5f4;
+    margin-top: 85px;
+}
+button:hover{
+    cursor: pointer;
+}
+.formacao{
+    width: 600px;
+    height: 825px;
+    background-color: #ffffff;
+    margin: 0 auto;
+}
+.pergunta h2{
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 17px;
+    margin-top: 27px;
+    margin-bottom: 15px;
+}
+.pergunta > input{
+    margin-left: 16px;
+    margin-right: 20px;
+    margin-top: 9px;
+    width: 564px;
+    height: 46px;
+    font-size: 19px;
+    border-radius: 5px;
+    border:1px solid #D1D1D1;
+    box-sizing: border-box;
+}
+
+.conjunto{
+    height: 32px;
+    width: 100px;
+}
+.niveis{
+    width: 600px;
+    height: 316px;
+    background-color: #ffffff;
+    margin: 0 auto;
+}
+.niveis > input{
+   
+        margin-left: 16px;
+        margin-right: 20px;
+        margin-top: 9px;
+        width: 564px;
+        height: 46px;
+        font-size: 19px;
+        border-radius: 5px;
+        border:1px solid #D1D1D1;
+        box-sizing: border-box;
+    
+}
+.niveis h2{
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 17px;
+    margin-top: 27px;
+    margin-bottom: 15px;
+}
+.imagem-quizz{
+    width: 500px;
+    height: 266px;
+    background-color: rgb(67, 78, 78); /*trocar por backdroung image*/
+    border-radius: 5px;
+   position: relative;
+}
+.imagem-quizz h2{
+    position: absolute;
+    bottom: 20px;
+    left: 23px;
+    font-size: 23px;
+    color: #FFFFFF;
+}
+.acessar{
+    width: 220px;
+    height: 44px;
+}
+.voltar h2{
+    margin-top: 19px;
+    color: #818181;
+    font-size: 21px;
+}
+.voltar :hover{
+    cursor: pointer;
+}
+
