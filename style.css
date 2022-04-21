@@ -67,7 +67,6 @@ body {
 
 .seusQuizzes > button:hover{ 
     cursor: pointer;
-<<<<<<< HEAD
 } 
 
 .corpoTela3 { 
@@ -104,8 +103,6 @@ body {
     font-size: 19px;
     font-weight: 400;
     color: rgba(255, 255, 255, 1);
-}
-=======
 }
 
 /*COMECEI A MEXER DAQUI*/
@@ -261,4 +258,3 @@ button:hover{
     cursor: pointer;
 }
 
->>>>>>> 0fd07a26b06cce2aaedf27bdd5f336f4300f811d
