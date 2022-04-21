@@ -105,7 +105,7 @@ body {
     color: rgba(255, 255, 255, 1);
 }
 
-/COMECEI A MEXER DAQUI/
+/*COMECEI A MEXER DAQUI*/
 .esconder{
     display: none;
 }
@@ -231,9 +231,9 @@ button:hover{
 .imagem-quizz{
     width: 500px;
     height: 266px;
-    background-color: rgb(67, 78, 78); /trocar por backdroung image/
+    background-color: rgb(67, 78, 78); /*trocar por backdroung image*/
     border-radius: 5px;
-   position: relative;
+   position:relative;
 }
 .imagem-quizz h2{
     position: absolute;
