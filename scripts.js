@@ -11,18 +11,20 @@ function renderizaQuiz(response) {
     quiz = response.data;   
     console.log(quiz);
     console.log("Deu bom");
-    const lista = document.querySelector("ul.quizBuscado"); 
+    let lista = document.querySelector("ul.quizBuscado"); 
 
     lista.innerHTML = "";
 
-    for(let i=0; i<8026; i++) {    
-        console.log("oiiii");
-        lista += `
+    for(let i=0; i<6; i++) {   
+        console.log("bom dia"); 
+        lista.innerHTML += `
             <li>
-                <img src="${quiz[i].image}"> 
+                <img src="${quiz[i].image}"/> 
                 <h4>${quiz[i].title}</h4>
             </li>` 
-    }
+    } 
+
+    console.log(lista);
 }
 
 function errou () { 
