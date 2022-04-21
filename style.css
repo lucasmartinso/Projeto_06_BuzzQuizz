@@ -104,10 +104,8 @@ body {
     font-weight: 400;
     color: rgba(255, 255, 255, 1);
 }
-<<<<<<< HEAD
-=======
 
-/*COMECEI A MEXER DAQUI*/
+/COMECEI A MEXER DAQUI/
 .esconder{
     display: none;
 }
@@ -119,9 +117,6 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
-   
-   
-  
  
 }
 .criacao{
@@ -236,7 +231,7 @@ button:hover{
 .imagem-quizz{
     width: 500px;
     height: 266px;
-    background-color: rgb(67, 78, 78); /*trocar por backdroung image*/
+    background-color: rgb(67, 78, 78); /trocar por backdroung image/
     border-radius: 5px;
    position: relative;
 }
@@ -259,5 +254,3 @@ button:hover{
 .voltar :hover{
     cursor: pointer;
 }
-
->>>>>>> 071c90c2be2bce5a61b93ba86297c781fcdd0d5a
