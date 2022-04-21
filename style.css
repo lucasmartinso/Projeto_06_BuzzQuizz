@@ -72,7 +72,7 @@ body {
 }
 .escondido{display: none;}
 
-.tela3{
+.tela3 {
     display: flex;
     flex-direction: column;
     justify-content: center;
