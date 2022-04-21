@@ -50,8 +50,14 @@
     </div>
     <div class="tela3-parte2 escondido">
         <div class="criacao"> <h1>Crie suas perguntas</h1></div>
-        <div class="formacao">
+        <div class="bloco">
+        <div class="pergunta-fechada ">
+            <h2>Pergunta 1</h2><ion-icon onclick="abrirPerguntas()" class="icone" name="create-outline"></ion-icon>
+        </div>
+        <div class="formacao escondido">
+           
             <div class="pergunta ">
+                
                 <h2>Pergunta 1</h2>
                 <input type="text" placeholder="    Texto da pergunta" required>
                 <input type="text"placeholder="   Cor de fundo da pergunta" required>
@@ -70,12 +76,17 @@
                 <input type="text"placeholder="  URL da imagem 3" required>
             </div>
         </div>
+        </div>
+       
         <button onclick="criarNiveis()" class="perguntas">Prosseguir pra criar niveis</button>
 
     </div>
     <div class="tela3-parte3 escondido ">
         <div class="criacao"> <h1>Agora, decida os niveis</h1></div>
-        <div class="niveis">
+        <div class="nivel-fechado  ">
+            <h2>Nivel 1</h2><ion-icon onclick="abrirNiveis()" class="icone" name="create-outline"></ion-icon>
+        </div>
+        <div class="niveis escondido">
         <h2>Nivel 1</h2>
         <input type="text" placeholder="    Titulo do nivel" required>
         <input type="text"placeholder="   % de acerto minima" required>
@@ -96,7 +107,7 @@
         
 
     <!-- TELA 3 --> 
-
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="scripts.js"></script>
 </body>

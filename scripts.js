@@ -46,12 +46,23 @@ function criarPerguntas(){
    
     document.querySelector(".tela3-parte1").classList.add("escondido")
     document.querySelector(".tela3-parte2").classList.remove("escondido")
-    alert("criando perguntas")
+  
+    alert("Agora criar perguntas")
+}
+function abrirPerguntas(){
+    document.querySelector(".pergunta-fechada").classList.add("escondido")
+    document.querySelector(".formacao").classList.remove("escondido")
+    alert("Abrir aba das perguntas")
 }
 function criarNiveis(){
     document.querySelector(".tela3-parte2").classList.add("escondido")
     document.querySelector(".tela3-parte3").classList.remove("escondido")
-    alert("criando niveis")
+    alert("Agora criar os niveis")
+}
+function abrirNiveis(){
+    document.querySelector(".nivel-fechado").classList.add("escondido")
+    document.querySelector(".niveis").classList.remove("escondido")
+    alert("Abrir aba dos niveis")
 }
 function finalizarQuizz(){
     document.querySelector(".tela3-parte3").classList.add("escondido")
