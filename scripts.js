@@ -15,7 +15,7 @@ function renderizaQuiz(response) {
 
     lista.innerHTML = "";
 
-    for(let i=8023; i<8026; i++) {    
+    for(let i=0; i<8026; i++) {    
         console.log("oiiii");
         lista += `
             <li>
