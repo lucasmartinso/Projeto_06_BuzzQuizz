@@ -249,6 +249,9 @@ button:hover{
 .voltar :hover{
     cursor: pointer;
 }
+.icone :hover{
+    cursor: pointer;
+}
 .pergunta-fechada , .nivel-fechado  {
     display: flex;
     align-items: center;
@@ -264,18 +267,23 @@ button:hover{
     font-size: 20px;
     font-weight: bold;
     margin-left: 17px;
- 
-  
-  
+
+}
+.nivel-fechado h2{
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 17px;
+
 }
 .icone{
     width: 26px;
     height: 23px;
   
 }
-.icone :hover{
-    cursor: pointer;
+.bloco{
+    margin-top: 24px;
 }
+
 
 
 
