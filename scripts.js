@@ -31,3 +31,40 @@ function errou () {
 
 buscaQuizzes();
 
+function criaQuizz() { 
+ document.querySelector(".corpo").classList.add("escondido")
+ document.querySelector(".corpoTela3").classList.remove("escondido")
+ document.querySelector(".tela3-parte1").classList.remove("escondido")
+    alert("Vamos criar um quizz")
+    //Mandar pra tela 3
+}
+/*-------------------------------------------------------------------------------*/
+//Funcoes da tela 3
+
+
+function criarPerguntas(){
+   
+    document.querySelector(".tela3-parte1").classList.add("escondido")
+    document.querySelector(".tela3-parte2").classList.remove("escondido")
+    alert("criando perguntas")
+}
+function criarNiveis(){
+    document.querySelector(".tela3-parte2").classList.add("escondido")
+    document.querySelector(".tela3-parte3").classList.remove("escondido")
+    alert("criando niveis")
+}
+function finalizarQuizz(){
+    document.querySelector(".tela3-parte3").classList.add("escondido")
+    document.querySelector(".tela3-parte4").classList.remove("escondido")
+    alert("finalizando quizz")
+}
+function acessarQuizz(){
+    alert("acessando quizz")
+    //mandar pra tela 2
+
+}
+function voltarHome(){
+    alert("voltando pra home")
+    //mandar pra tela 1
+    
+}

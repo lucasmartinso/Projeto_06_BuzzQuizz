@@ -14,7 +14,7 @@
     <div class="cabecalho">BuzzQuizz</div>  
 
     <!-- TELA 1 -->
-    <div class="corpo esconder">
+    <div class="corpo ">
         <div class="seusQuizzes">
             <h2>Você não criou nenhum quiz ainda :(</h2> 
             <button onclick="criaQuizz()">Criar Quizz</button>
@@ -33,9 +33,9 @@
     <!-- TELA 2 --> 
 
     <!-- TELA 3 -->  
-    
-    <div class="tela3 parte1 ">
-        <div class="criacao"> <h1>Comece pelo comeco</h1></div>
+    <div class="corpoTela3 escondido">
+    <div class="tela3-parte1 escondido ">
+        <div class="criacao "> <h1>Comece pelo comeco</h1></div>
        
         <div class="infos">
             
@@ -45,10 +45,10 @@
             <input type="text"placeholder="      Quantidade de niveis do quizz" required>
             
         </div>
-        <button class="basico">Prosseguir pra criar perguntas</button>
+        <button onclick="criarPerguntas()" class="basico">Prosseguir pra criar perguntas</button>
 
     </div>
-    <div class="tela3 parte2 ">
+    <div class="tela3-parte2 escondido">
         <div class="criacao"> <h1>Crie suas perguntas</h1></div>
         <div class="formacao">
             <div class="pergunta ">
@@ -70,10 +70,10 @@
                 <input type="text"placeholder="  URL da imagem 3" required>
             </div>
         </div>
-        <button class="perguntas">Prosseguir pra criar niveis</button>
+        <button onclick="criarNiveis()" class="perguntas">Prosseguir pra criar niveis</button>
 
     </div>
-    <div class="tela3  parte3  ">
+    <div class="tela3-parte3 escondido ">
         <div class="criacao"> <h1>Agora, decida os niveis</h1></div>
         <div class="niveis">
         <h2>Nivel 1</h2>
@@ -83,19 +83,17 @@
         <input type="text"placeholder="   Descricao do nivel" required>
      
     </div>
-    <button class="finalizar">Finalizar Quizz</button>
+    <button onclick="finalizarQuizz()" class="finalizar">Finalizar Quizz</button>
     </div>
  
-    <div class="tela3 parte4 ">
+    <div class="tela3-parte4 escondido">
         <div class="criacao"> <h1>Seu quizz esta pronto!</h1></div>
         <div class="imagem-quizz"><h2>Titulo do Quizz</h2></div>
-        <button class="acessar">Acessar Quizz</button>
-        <div class="voltar"><h2>Voltar pra home</h2></div>
+        <button onclick="acessarQuizz()" class="acessar">Acessar Quizz</button>
+        <div onclick="voltarHome()" class="voltar"><h2>Voltar pra home</h2></div>
     </div>
-
-        <div class="corpoTela3">
-
-        </div>
+</div>
+        
 
     <!-- TELA 3 --> 
 
