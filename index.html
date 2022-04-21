@@ -14,12 +14,18 @@
     <div class="cabecalho">BuzzQuizz</div>  
 
     <!-- TELA 1 -->
-    <div class="corpo esconder">
+    <div class="corpo ">
         <div class="seusQuizzes">
             <h2>Você não criou nenhum quiz ainda :(</h2> 
             <button onclick="criaQuizz()">Criar Quizz</button>
         </div> 
-        <div class="todosQuizzes"></div>
+        <h3>Todos os seus Quizzes</h3> 
+        <div class="todosQuizzes">
+            <ul class="quizBuscado">
+               
+            </ul>
+            
+        </div>
     </div> 
     <!-- TELA 1 --> 
 
@@ -87,8 +93,13 @@
         <div class="voltar"><h2>Voltar pra home</h2></div>
     </div>
 
+        <div class="corpoTela3">
 
+        </div>
 
-    <!-- TELA 3 -->
+    <!-- TELA 3 --> 
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="scripts.js"></script>
 </body>
 </html>
