@@ -172,7 +172,7 @@ border-radius: 5px;
     margin-bottom: 24px;
 }
 button{
-   
+
     background-color:#EC362D;
     width: 369px;
     height: 54px;
@@ -180,6 +180,7 @@ button{
     font-size: 21px;
     color: #fff5f4;
     margin-top: 85px;
+  
 }
 button:hover{
     cursor: pointer;
@@ -408,3 +409,25 @@ li.bloco > .pergunta-fechada h2{
 }
 
 .escondido{display: none;}
+
+
+@media(max-width:375px){
+    /* tela1*/
+    /* tela1*/
+   
+   
+    /* tela2*/
+    /* tela2*/
+
+    /* tela3*/
+    /* tela3*/
+     
+
+
+}
+
+
+
+
+
+

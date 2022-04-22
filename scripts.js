@@ -1,3 +1,4 @@
+//Funcoes da tela 1
 
  
 function criaQuizz() {  
@@ -10,6 +11,16 @@ function criaQuizz() {
 
 
 /-------------------------------------------------------------------------------/
+
+//Funcoes da tela 2
+function reiniciarQuizz(){
+    alert("Reiniciando quizz")
+    const elemento =document.querySelector(".tela2")
+    elemento.scrollIntoView()
+  
+}
+
+/*-------------------------------------------------------------------------------*/
 //Funcoes da tela 3
 
 
@@ -200,14 +211,10 @@ function acessarQuizz(){
 function voltarHome(){
     alert("voltando pra home")
     document.querySelector(".tela2").classList.add("escondido");
-    document.querySelector(".corpo").classList.remove("escondido"); 
+    document.querySelector(".tela1").classList.remove("escondido");
+    document.querySelector(".naoCriou").classList.add("escondido");
+    document.querySelector(".cripu").classList.remove("escondido");  
+  
     //mandar pra tela 1
     
-}
-//Funcoes da tela 2
-function reiniciarQuizz(){
-    alert("Reiniciando quizz")
-    const elemento =document.querySelector(".tela2")
-    elemento.scrollIntoView()
-  
 }
