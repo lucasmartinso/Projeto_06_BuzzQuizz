@@ -115,7 +115,14 @@ border-radius: 5px;
 -----------------------------------------------------------
 
 
+.corpoTela3{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
+
+}
 
 .tela3-parte1 ,.tela3-parte2 ,.tela3-parte3 ,.tela3-parte4{ 
     display: flex;
@@ -305,7 +312,8 @@ li.bloco > .pergunta-fechada h2{
     width: 100%;
     height: 227px;
     margin-top: -31px;
-    background-color: #000000;
+  
+   background-image: linear-gradient(to bottom,  rgba(19, 2, 2, 0.6), rgba(19, 2, 2, 0.6)), url("/img/LUD.jpeg");
 }
 .parteDeCima h2{
     font-size: 39px;

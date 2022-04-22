@@ -81,7 +81,7 @@ function voltarHome(){
     document.querySelector(".tela2").classList.add("escondido");
     document.querySelector(".tela1").classList.remove("escondido");
     document.querySelector(".naoCriou").classList.add("escondido");
-    document.querySelector(".cripu").classList.remove("escondido");  
+    document.querySelector(".criou").classList.remove("escondido");  
   
     //mandar pra tela 1
     
