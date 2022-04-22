@@ -167,7 +167,7 @@ border-radius: 5px;
     margin-bottom: 24px;
 }
 button{
-   
+
     background-color:#EC362D;
     width: 369px;
     height: 54px;
@@ -175,6 +175,7 @@ button{
     font-size: 21px;
     color: #fff5f4;
     margin-top: 85px;
+  
 }
 button:hover{
     cursor: pointer;
@@ -406,60 +407,22 @@ li.bloco > .pergunta-fechada h2{
 
 
 @media(max-width:375px){
-    .naoCriou{
-        width: 95%;     
-    }
-    .informacao{
-        margin-left: 18px;
-        margin-top: 35px;
-    }
-    .quizzes{
-        margin-left: 0px;
- 
-    }
-    .parteDeCima{
-        height: 142px;
-    }
-    .parteDeCima h2{
-        font-size: 19px;
-    }
-    .block{
-        width: 100%;
-    }
-    .titulo-pergunta , .final , .titulo-final{
-        width: 90%;
-        margin-left: 18px;
-        height: 89px;
-        margin-top: 18px;
-    }
-    .opcao{
-        width: 163px;
-        height: 113px;
-    }
-    .nome-opcao{
-        font-size: 13px;
-      
-    }
-    .respostas{
-        display: flex;
-        flex-wrap: nowrap;
-       max-width: 100%;
-       
-    }
-    
-   /*
-.respostas{
-   display: flex;
-   flex-wrap: wrap;
-   justify-content: center;
-   align-items: center;
-}
+    /* tela1*/
+    /* tela1*/
+   
+   
+    /* tela2*/
+    /* tela2*/
 
-}*/ 
-
-
-
-
+    /* tela3*/
+    /* tela3*/
+     
 
 
 }
+
+
+
+
+
+
