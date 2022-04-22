@@ -1,5 +1,12 @@
 
-/-------------------------------------------------------------------------------/
+//Funcoes da tela 2
+function reiniciarQuizz(){
+    alert("Reiniciando quizz")
+    const elemento =document.querySelector(".tela2")
+    elemento.scrollIntoView()
+  
+}
+/*-------------------------------------------------------------------------------*/
 //Funcoes da tela 3
 
 
@@ -69,11 +76,4 @@ function voltarHome(){
     document.querySelector(".corpo").classList.remove("escondido"); 
     //mandar pra tela 1
     
-}
-//Funcoes da tela 2
-function reiniciarQuizz(){
-    alert("Reiniciando quizz")
-    const elemento =document.querySelector(".tela2")
-    elemento.scrollIntoView()
-  
 }
