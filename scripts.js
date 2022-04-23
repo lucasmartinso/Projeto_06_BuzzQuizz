@@ -125,7 +125,7 @@ function gerarPerguntas() {
         
                 <div class="pergunta ">
                     
-                    <h2>Pergunta ${i}</h2>
+                   
                     <input class="textoPergunta" type="text" placeholder="    Texto da pergunta" required>
                     <input class="corFundo" type="text"placeholder="   Cor de fundo da pergunta" required>
                     <h2>Resposta correta</h2>

@@ -14,7 +14,7 @@
     <div class="cabecalho">BuzzQuizz</div>  
 
     <!-- TELA 1 -->
-   <div class="tela1 escondido ">
+   <div class="tela1  ">
        <div class="naoCriou ">
            <h1>Voce nao criou nenhum quizz ainda :(</h1>
            <div onclick="criaQuizz()" class="criarQuizz">Criar Quizz</div>
@@ -39,18 +39,18 @@
            <div class="quizz"><h2>Titulo do quizz</h2></div>
   
        </div>
-      
+
 
    </div>
     <!-- TELA 1 --> 
 
     <!-- TELA 2 --> 
-    <div class="tela2 ">
+    <div class="tela2 escondido">
     <div class="parteDeCima">
         <h2>TITULO DO QUIZZ</h2>
     </div>
     <div class="parteDeBaixo">
-      <div class="block">
+      <div clasescondidos="block">
           <div class="titulo-pergunta"><h3>Titulo da pergunta?</h3> </div>
           <div class="respostas">
                     <div class="primeira">
@@ -83,7 +83,7 @@
         </div>
 
      </div>
-     <button onclick="reiniciarQuizz()" class="basico">Reiniciar Quizz</button>
+     <button onclick="reiniciarQuizz()" class="reiniciar">Reiniciar Quizz</button>
      <div onclick="voltarHome()" class="voltar"><h2>Voltar pra home</h2></div>
     </div>
     </div>
@@ -91,7 +91,7 @@
 
     <!-- TELA 3 -->  
     <div class="corpoTela3 ">
-            <div class="tela3-parte1 escondido ">
+            <div class="tela3-parte1  escondido">
                 <div class="criacao "> <h1>Comece pelo comeco</h1></div>
             
                 <div class="infos">
@@ -102,13 +102,14 @@
                     <input class= "numNiveis" type="text"placeholder="      Quantidade de niveis do quizz" required>
                     
                 </div>
-<<<<<<< HEAD
-                <button onclick="criarPerguntas()" >Prosseguir pra criar perguntas</button>
-=======
-                <button onclick="criarPerguntas()" class="basico">Prosseguir pra criar perguntas</button></div>
 
+               
 
+                <button onclick="criarPerguntas()" class="criar">Prosseguir pra criar perguntas</button>
             </div>
+
+
+           
             <div class="tela3-parte2 escondido">
                 <div class="criacao"> <h1>Crie suas perguntas</h1></div>  
                 <ul class="perguntitas">
@@ -131,6 +132,7 @@
                 <button onclick="acessarQuizz()" class="acessar">Acessar Quizz</button>
                 <div onclick="voltarHome()" class="voltar"><h2>Voltar pra home</h2></div>
             </div>
+        </div>
     </div>
         
 

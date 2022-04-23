@@ -414,15 +414,123 @@ li.bloco > .pergunta-fechada h2{
 
 
 @media(max-width:375px){
-    /* tela1*/
-    /* tela1*/
-   
-   
-    /* tela2*/
-    /* tela2*/
 
-    /* tela3*/
-    /* tela3*/
+/* tela1*/
+
+.naoCriou{
+    width: 95%;
+}
+.quizzes {
+   margin-left: 0px;
+}
+.informacao{
+    justify-content: space-between;
+    margin-left: 0px;
+    width: 100%;
+    padding: 20px;
+}
+
+
+/* tela2*/
+    .parteDeCima{
+    height: 142px;
+    width: 100%;
+    }
+    .parteDeCima h2{
+        font-size: 19px;
+    }
+
+    .block {
+        width: 100%;
+        height: 436px;
+    }
+    .final{
+        width: 100%;
+        height: 500px;
+    }
+    .titulo-final , .titulo-pergunta{
+    width: 95%;
+    margin-left: 8px;
+    }
+    .titulo-final h3, .titulo-pergunta h3{
+        font-size: 19px;
+    }
+    .titulo-final{
+        height: 99px;
+        margin-top: 18px;
+
+    }
+    .titulo-pergunta{
+        height: 89px;
+        margin-top: 18px;
+    }
+    .opcao{
+        width: 164px;
+        height: 113px;
+        margin: 6px;
+        margin-top: 13px;
+    }
+    .nome-opcao{
+        font-size: 18px;
+        margin-left: 5px;
+        margin-top: 6px;
+    }
+    .parteBaixa{
+        flex-direction: column;
+
+    }
+    .imagem{
+        width: 340px;
+        height: 255px;
+        margin-top: 9px;
+    }
+
+    /* tela3-parte 1*/
+    .infos{
+        width: 100%;
+    }
+    .infos > input{
+     width: 90%;
+     
+    }
+    button {
+        
+        margin-top: 34px;
+        font-size: 18px;
+    }
+    .reiniciar{
+        width: 220px;
+        height: 44px;
+    }
+    .criar{
+        width: 323px;
+    }
+    .criacao{
+        margin-top: -2px;
+    }
+    .voltar{
+        font-size: 18px;
+    }
+    .texto h3{
+        font-size: 18px;
+    }
+     /* tela3-parte 3*/
+     .niveis{
+         width: 100%;
+     }
+    /*tela3-parte 4:*/
+    .imagem-quizz{
+        width: 340px;
+        height: 181px;
+    }
+    .imagem-quizz h2{
+        font-size: 19px;
+    }
+    .voltar h2 {
+        font-size: 18px;
+    }
+
+  
      
 
 
