@@ -119,7 +119,7 @@ function gerarPerguntas() {
         lista.innerHTML += `
             <li class="bloco">
             <div class="pergunta-fechada ">
-                <h2>Pergunta ${i}</h2><ion-icon onclick="abrirPerguntas(this)" class="icone" name="create-outline"></ion-icon>
+                <h2>Pergunta ${i}</h2>${i}<ion-icon onclick="abrirPerguntas(this)" class="icone" name="create-outline"></ion-icon>
             </div>
             <div class="formacao escondido">
         
@@ -148,7 +148,8 @@ function gerarPerguntas() {
 
 }
 
-function abrirPerguntas(elemento){
+function abrirPerguntas(elemento){ 
+    console(elemento);
     document.querySelector(".pergunta-fechada").classList.toggle("escondido");
     document.querySelector(".formacao").classList.toggle("escondido");
     alert("Abrir aba das perguntas");
@@ -172,10 +173,11 @@ function criarNiveis(){
 
     console.log(cor); 
 
-    for(let i=0; i<7 && (cor[i]=== "A" || cor[i]=== "B" || cor[i]=== "C" || cor[i]=== "D" || cor[i]=== "E" || cor[i]=== "F" || cor[0]=== "#"); i++) { 
-        console.log("OLAAAAAAAA");
-        if(cor[0]=== "#") {
-            corHex += cor[i]; 
+    for(let i=0; i<1 && cor[0]=== "#"; i++) { 
+        console.log("OLAAAAAAAA"); 
+        corHex = cor[0];
+        for(let j=1; j<7 && (cor[j]=== "A" || cor[j]=== "B" || cor[j]=== "C" || cor[j]=== "D" || cor[j]=== "E" || cor[j]=== "F"); j++) {
+            corHex += cor[j]; 
         }
     } 
 
@@ -206,7 +208,7 @@ function abrirNiveis(){
         lista.innerHTML += `
         <li class="bloco">
             <div class="nivel-fechado  ">
-                <h2>Nivel ${i}</h2><ion-icon onclick="abrirNiveis()" class="icone" name="create-outline"></ion-icon>
+                <h2>Nivel ${i}</h2><ion-icon onclick="edicaoNiveis()" class="icone" name="create-outline"></ion-icon>
             </div>
             <div class="niveis escondido">
                 <h2>Nivel ${i}</h2>
@@ -220,11 +222,15 @@ function abrirNiveis(){
     }
 
     if(numNiveis>30) {
-        document.querySelector(".nivel-fechado").classList.add("escondido")
-        document.querySelector(".niveis").classList.remove("escondido")
-        alert("Abrir aba dos niveis") 
+        
     }
-} 
+}  
+
+function edicaoNiveis() { 
+    document.querySelector(".nivel-fechado").classList.add("escondido");
+    document.querySelector(".niveis").classList.remove("escondido");
+    alert("Abrir aba dos niveis");
+}
 
 function finalizarQuizz(){
     document.querySelector(".tela3-parte3").classList.add("escondido")
