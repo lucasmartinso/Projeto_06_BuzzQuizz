@@ -166,13 +166,20 @@ function criarNiveis(){
     let cor = "";
     let corHex = "";  
 
-    for(let i=0; i<7; i++) { 
+    for(let i=0; i<corFundo.length; i++) { 
         cor += corFundo[i].toUpperCase();
-    }
+    } 
 
-    for(let i=0; i<7 && (cor[i]=== "A" || cor[i]=== "B" || cor[i]=== "C" || cor[i]=== "D" || cor[i]=== "E" || cor[i]=== "F" && cor[0]=== "#"); i++) {
-        corHex += corFundo[i];
-    }
+    console.log(cor); 
+
+    for(let i=0; i<7 && (cor[i]=== "A" || cor[i]=== "B" || cor[i]=== "C" || cor[i]=== "D" || cor[i]=== "E" || cor[i]=== "F" || cor[0]=== "#"); i++) { 
+        console.log("OLAAAAAAAA");
+        if(cor[0]=== "#") {
+            corHex += cor[i]; 
+        }
+    } 
+
+    console.log(corHex);
 
     let https= "";
 
@@ -183,16 +190,40 @@ function criarNiveis(){
     if(textoPergunta.length>=20 && https === "https://" && textoResposta1 !== "" && textoResposta2 !== "" && textoResposta3 !== "" && textoResposta4 !== "" && corHex.length === 7) {
         document.querySelector(".tela3-parte2").classList.add("escondido");
         document.querySelector(".tela3-parte3").classList.remove("escondido");
-        alert("Agora criar os niveis");
+        alert("Agora criar os niveis"); 
+        abrirNiveis();
     } else { 
         alert("PREENCHA NOVAMENTE\n\nTexto da pergunta tem que ter no mínimo 20 caracteres\nCor de fundo modelo Hexadecimal\nTexto das respostas tem que estar preenchidos\nObrigatória ao menos uma resposta errada");
     }
 } 
 
 function abrirNiveis(){
-    document.querySelector(".nivel-fechado").classList.add("escondido")
-    document.querySelector(".niveis").classList.remove("escondido")
-    alert("Abrir aba dos niveis")
+    let numNiveis= Number(document.querySelector("input.numNiveis").value); 
+    let lista = document.querySelector("ul.niveis"); 
+    lista.innerHTML = ""; 
+
+    for(let i=1; i<=numNiveis; i++) { 
+        lista.innerHTML += `
+        <li class="bloco">
+            <div class="nivel-fechado  ">
+                <h2>Nivel ${i}</h2><ion-icon onclick="abrirNiveis()" class="icone" name="create-outline"></ion-icon>
+            </div>
+            <div class="niveis escondido">
+                <h2>Nivel ${i}</h2>
+                <input type="text" placeholder="    Titulo do nivel" required>
+                <input type="text"placeholder="   % de acerto minima" required>
+                <input type="text" placeholder="    URL da imagem do nivel" required>
+                <input type="text"placeholder="   Descricao do nivel" required>
+
+            </div> 
+        <li class="bloco">`
+    }
+
+    if(numNiveis>30) {
+        document.querySelector(".nivel-fechado").classList.add("escondido")
+        document.querySelector(".niveis").classList.remove("escondido")
+        alert("Abrir aba dos niveis") 
+    }
 } 
 
 function finalizarQuizz(){
