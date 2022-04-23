@@ -23,68 +23,6 @@ function reiniciarQuizz(){
 /*-------------------------------------------------------------------------------*/
 //Funcoes da tela 3
 
-
-function renderizaQuiz(response) { 
-    quiz = response.data;   
-    console.log(quiz);
-    console.log("Deu bom");
-    let lista = document.querySelector("ul.quizBuscado"); 
-} 
-
-function criarPerguntas(){  
-    let titulo = document.querySelector("input.title").value;   
-    let numPerguntas = Number(document.querySelector("input.numPerguntas").value); 
-    let numNiveis= Number(document.querySelector("input.numNiveis").value); 
-    let url = document.querySelector("input.url").value; 
-    let https= "";
-
-    for(let i=0; i<8; i++) { 
-        https += url[i];
-    } 
-
-    for(let i=0; i<6; i++) {   
-        console.log("bom dia"); 
-        lista.innerHTML += `
-            <li>
-                <img src="${quiz[i].image}"/> 
-                <h4>${quiz[i].title}</h4>
-            </li>` 
-    } 
-
-    console.log(lista);
-}
-
-function errou () { 
-    console.log("ERROOOO");
-} 
-
-buscaQuizzes();
-   if(titulo.length>=20 && titulo.length<=65 && numPerguntas>=3 && numNiveis>=2 && https === "https://") { 
-    document.querySelector(".tela3-parte1").classList.add("escondido");
-    document.querySelector(".tela3-parte2").classList.remove("escondido"); 
-    alert("Agora criar perguntas"); 
-   } else { 
-       alert("PREENCHA NOVAMENTE!!!\n\nTitulo tem que ter de 20 a 65 caracteres\nA imagem deve ter formato de URL\nSão exigidas ao menos 3 perguntas\nTem que ter pelo menos 2 niveis");
-       titulo = document.querySelector("input.title").value="";   
-       numPerguntas = document.querySelector("input.numPerguntas").value=""; 
-       numNiveis= document.querySelector("input.numNiveis").value=""; 
-       url = document.querySelector("input.url").value=""; 
-   }  
-
-function gerarPerguntas() { 
-    let numPerguntas = Number(document.querySelector("input.numPerguntas").value); 
-    let lista = document.querySelector("ul.perguntitas");
-} 
-
-
-//Funcoes da tela 3
-
-function abrirPerguntas(){
-    document.querySelector(".pergunta-fechada").classList.add("escondido")
-    document.querySelector(".formacao").classList.remove("escondido")
-    alert("Abrir aba das perguntas")
-} 
-
 function criarPerguntas(){  
     let titulo = document.querySelector("input.title").value;   
     let numPerguntas = Number(document.querySelector("input.numPerguntas").value); 
@@ -107,8 +45,9 @@ function criarPerguntas(){
        numPerguntas = document.querySelector("input.numPerguntas").value=""; 
        numNiveis= document.querySelector("input.numNiveis").value=""; 
        url = document.querySelector("input.url").value=""; 
-   }
-}  
+   }   
+}
+
 
 function gerarPerguntas() { 
     let numPerguntas = Number(document.querySelector("input.numPerguntas").value); 
@@ -119,13 +58,13 @@ function gerarPerguntas() {
         lista.innerHTML += `
             <li class="bloco">
             <div class="pergunta-fechada ">
-                <h2>Pergunta ${i}</h2>${i}<ion-icon onclick="abrirPerguntas(this)" class="icone" name="create-outline"></ion-icon>
+                <h2>Pergunta ${i}</h2><ion-icon onclick="abrirPerguntas(this)" class="icone" name="create-outline"></ion-icon>
             </div>
             <div class="formacao escondido">
         
                 <div class="pergunta ">
                     
-                   
+                    <h2>Pergunta ${i}</h2>
                     <input class="textoPergunta" type="text" placeholder="    Texto da pergunta" required>
                     <input class="corFundo" type="text"placeholder="   Cor de fundo da pergunta" required>
                     <h2>Resposta correta</h2>
@@ -193,13 +132,13 @@ function criarNiveis(){
         document.querySelector(".tela3-parte2").classList.add("escondido");
         document.querySelector(".tela3-parte3").classList.remove("escondido");
         alert("Agora criar os niveis"); 
-        abrirNiveis();
+        gerarNiveis();
     } else { 
         alert("PREENCHA NOVAMENTE\n\nTexto da pergunta tem que ter no mínimo 20 caracteres\nCor de fundo modelo Hexadecimal\nTexto das respostas tem que estar preenchidos\nObrigatória ao menos uma resposta errada");
     }
 } 
 
-function abrirNiveis(){
+function gerarNiveis(){
     let numNiveis= Number(document.querySelector("input.numNiveis").value); 
     let lista = document.querySelector("ul.niveis"); 
     lista.innerHTML = ""; 
@@ -219,10 +158,6 @@ function abrirNiveis(){
 
             </div> 
         <li class="bloco">`
-    }
-
-    if(numNiveis>30) {
-        
     }
 }  
 
@@ -251,7 +186,6 @@ function voltarHome(){
     document.querySelector(".tela1").classList.remove("escondido");
     document.querySelector(".naoCriou").classList.add("escondido");
     document.querySelector(".criou").classList.remove("escondido");  
-  
+}
     //mandar pra tela 1
     
-}
