@@ -1,6 +1,4 @@
 //Funcoes da tela 1
-
- 
 function criaQuizz() {  
     alert("Vamos criar um quizz");
     document.querySelector(".tela1").classList.add("escondido");
@@ -8,10 +6,10 @@ function criaQuizz() {
     document.querySelector(".tela3-parte1").classList.remove("escondido");
     //Mandar pra tela 3
 }
-
-
-/-------------------------------------------------------------------------------/
-
+function selecionarQuizz(){
+    document.querySelector(".tela1").classList.add("escondido")
+    document.querySelector(".tela2").classList.remove("escondido")
+}
 //Funcoes da tela 2
 function reiniciarQuizz(){
     alert("Reiniciando quizz")
@@ -19,18 +17,72 @@ function reiniciarQuizz(){
     elemento.scrollIntoView()
   
 }
-
-/*-------------------------------------------------------------------------------*/
 //Funcoes da tela 3
+function abrirPerguntas(){
+    document.querySelector(".pergunta-fechada").classList.add("escondido")
+    document.querySelector(".formacao").classList.remove("escondido")
+    alert("Abrir aba das perguntas")
+} 
+function abrirNiveis(){
+    let numNiveis= Number(document.querySelector("input.numNiveis").value); 
+    let lista = document.querySelector("ul.niveis"); 
+    lista.innerHTML = ""; 
 
+    for(let i=1; i<=numNiveis; i++) { 
+        lista.innerHTML += `
+        <li class="bloco">
+            <div class="nivel-fechado  ">
+                <h2>Nivel ${i}</h2><ion-icon onclick="edicaoNiveis()" class="icone" name="create-outline"></ion-icon>
+            </div>
+            <div class="niveis escondido">
+                <h2>Nivel ${i}</h2>
+                <input type="text" placeholder="    Titulo do nivel" required>
+                <input type="text"placeholder="   % de acerto minima" required>
+                <input type="text" placeholder="    URL da imagem do nivel" required>
+                <input type="text"placeholder="   Descricao do nivel" required>
 
+            </div> 
+        <li class="bloco">`
+    }
+
+    if(numNiveis>30) {
+        
+    }
+} 
+function edicaoNiveis() { 
+    document.querySelector(".nivel-fechado").classList.add("escondido");
+    document.querySelector(".niveis").classList.remove("escondido");
+    alert("Abrir aba dos niveis");
+}
+function finalizarQuizz(){
+    document.querySelector(".tela3-parte3").classList.add("escondido")
+    document.querySelector(".tela3-parte4").classList.remove("escondido")
+    alert("finalizando quizz")
+} 
+function acessarQuizz(){
+    document.querySelector(".tela3-parte4").classList.add("escondido")
+    document.querySelector(".tela2").classList.remove("escondido")
+    alert("acessando quizz")
+    //mandar pra tela 2
+
+}
+function voltarHome(){
+    alert("voltando pra home")
+    document.querySelector(".tela2").classList.add("escondido");
+    document.querySelector(".tela1").classList.remove("escondido");
+    document.querySelector(".naoCriou").classList.add("escondido");
+    document.querySelector(".criou").classList.remove("escondido");  
+  
+    //mandar pra tela 1
+    
+}
+//Funcoes de servidor
 function renderizaQuiz(response) { 
     quiz = response.data;   
     console.log(quiz);
     console.log("Deu bom");
     let lista = document.querySelector("ul.quizBuscado"); 
 } 
-
 function criarPerguntas(){  
     let titulo = document.querySelector("input.title").value;   
     let numPerguntas = Number(document.querySelector("input.numPerguntas").value); 
@@ -53,11 +105,9 @@ function criarPerguntas(){
 
     console.log(lista);
 }
-
 function errou () { 
     console.log("ERROOOO");
 } 
-
 buscaQuizzes();
    if(titulo.length>=20 && titulo.length<=65 && numPerguntas>=3 && numNiveis>=2 && https === "https://") { 
     document.querySelector(".tela3-parte1").classList.add("escondido");
@@ -70,20 +120,6 @@ buscaQuizzes();
        numNiveis= document.querySelector("input.numNiveis").value=""; 
        url = document.querySelector("input.url").value=""; 
    }  
-
-function gerarPerguntas() { 
-    let numPerguntas = Number(document.querySelector("input.numPerguntas").value); 
-    let lista = document.querySelector("ul.perguntitas");
-} 
-
-
-//Funcoes da tela 3
-
-function abrirPerguntas(){
-    document.querySelector(".pergunta-fechada").classList.add("escondido")
-    document.querySelector(".formacao").classList.remove("escondido")
-    alert("Abrir aba das perguntas")
-} 
 
 function criarPerguntas(){  
     let titulo = document.querySelector("input.title").value;   
@@ -109,7 +145,6 @@ function criarPerguntas(){
        url = document.querySelector("input.url").value=""; 
    }
 }  
-
 function gerarPerguntas() { 
     let numPerguntas = Number(document.querySelector("input.numPerguntas").value); 
     let lista = document.querySelector("ul.perguntitas"); 
@@ -119,7 +154,7 @@ function gerarPerguntas() {
         lista.innerHTML += `
             <li class="bloco">
             <div class="pergunta-fechada ">
-                <h2>Pergunta ${i}</h2>${i}<ion-icon onclick="abrirPerguntas(this)" class="icone" name="create-outline"></ion-icon>
+                <h2>Pergunta ${i}</h2><ion-icon onclick="abrirPerguntas(this)" class="icone" name="create-outline"></ion-icon>
             </div>
             <div class="formacao escondido">
         
@@ -147,14 +182,6 @@ function gerarPerguntas() {
     }
 
 }
-
-function abrirPerguntas(elemento){ 
-    console(elemento);
-    document.querySelector(".pergunta-fechada").classList.toggle("escondido");
-    document.querySelector(".formacao").classList.toggle("escondido");
-    alert("Abrir aba das perguntas");
-} 
-
 function criarNiveis(){ 
     let textoPergunta = document.querySelector(".pergunta > input.textoPergunta").value;
     let corFundo = document.querySelector(".pergunta > input.corFundo").value;
@@ -199,59 +226,4 @@ function criarNiveis(){
     }
 } 
 
-function abrirNiveis(){
-    let numNiveis= Number(document.querySelector("input.numNiveis").value); 
-    let lista = document.querySelector("ul.niveis"); 
-    lista.innerHTML = ""; 
 
-    for(let i=1; i<=numNiveis; i++) { 
-        lista.innerHTML += `
-        <li class="bloco">
-            <div class="nivel-fechado  ">
-                <h2>Nivel ${i}</h2><ion-icon onclick="edicaoNiveis()" class="icone" name="create-outline"></ion-icon>
-            </div>
-            <div class="niveis escondido">
-                <h2>Nivel ${i}</h2>
-                <input type="text" placeholder="    Titulo do nivel" required>
-                <input type="text"placeholder="   % de acerto minima" required>
-                <input type="text" placeholder="    URL da imagem do nivel" required>
-                <input type="text"placeholder="   Descricao do nivel" required>
-
-            </div> 
-        <li class="bloco">`
-    }
-
-    if(numNiveis>30) {
-        
-    }
-}  
-
-function edicaoNiveis() { 
-    document.querySelector(".nivel-fechado").classList.add("escondido");
-    document.querySelector(".niveis").classList.remove("escondido");
-    alert("Abrir aba dos niveis");
-}
-
-function finalizarQuizz(){
-    document.querySelector(".tela3-parte3").classList.add("escondido")
-    document.querySelector(".tela3-parte4").classList.remove("escondido")
-    alert("finalizando quizz")
-} 
-
-function acessarQuizz(){
-    document.querySelector(".tela3-parte4").classList.add("escondido")
-    document.querySelector(".tela2").classList.remove("escondido")
-    alert("acessando quizz")
-    //mandar pra tela 2
-
-}
-function voltarHome(){
-    alert("voltando pra home")
-    document.querySelector(".tela2").classList.add("escondido");
-    document.querySelector(".tela1").classList.remove("escondido");
-    document.querySelector(".naoCriou").classList.add("escondido");
-    document.querySelector(".criou").classList.remove("escondido");  
-  
-    //mandar pra tela 1
-    
-}

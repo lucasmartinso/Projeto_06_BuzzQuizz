@@ -48,6 +48,9 @@ body {
 .criarQuizz:hover{
     cursor: pointer;
 }
+.quizz:hover{
+    cursor: pointer;
+}
 .criarQuizz{
     display: flex;
     align-items: center;
@@ -514,6 +517,10 @@ li.bloco > .pergunta-fechada h2{
     .texto h3{
         font-size: 18px;
     }
+      /* tela3-parte 3*/
+      li.bloco > .pergunta-fechada{
+          width:375px;
+        }
      /* tela3-parte 3*/
      .niveis{
          width: 100%;
