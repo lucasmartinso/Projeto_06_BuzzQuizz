@@ -1,6 +1,4 @@
 //Funcoes da tela 1
-
- 
 function criaQuizz() {  
     alert("Vamos criar um quizz");
     document.querySelector(".tela1").classList.add("escondido");
@@ -8,9 +6,11 @@ function criaQuizz() {
     document.querySelector(".tela3-parte1").classList.remove("escondido");
     //Mandar pra tela 3
 }
+function selecionarQuizz(){
+    document.querySelector(".tela1").classList.add("escondido")
+    document.querySelector(".tela2").classList.remove("escondido")
+} 
 
-
-/-------------------------------------------------------------------------------/
 
 //Funcoes da tela 2
 function reiniciarQuizz(){
@@ -18,10 +18,15 @@ function reiniciarQuizz(){
     const elemento =document.querySelector(".tela2")
     elemento.scrollIntoView()
   
-}
+} 
 
-/*-------------------------------------------------------------------------------*/
+
 //Funcoes da tela 3
+function abrirPerguntas(){
+    document.querySelector(".pergunta-fechada").classList.add("escondido")
+    document.querySelector(".formacao").classList.remove("escondido")
+    alert("Abrir aba das perguntas")
+}  
 
 function criarPerguntas(){  
     let titulo = document.querySelector("input.title").value;   
@@ -86,14 +91,6 @@ function gerarPerguntas() {
     }
 
 }
-
-function abrirPerguntas(elemento){ 
-    console(elemento);
-    document.querySelector(".pergunta-fechada").classList.toggle("escondido");
-    document.querySelector(".formacao").classList.toggle("escondido");
-    alert("Abrir aba das perguntas");
-} 
-
 function criarNiveis(){ 
     let textoPergunta = document.querySelector(".pergunta > input.textoPergunta").value;
     let corFundo = document.querySelector(".pergunta > input.corFundo").value;
@@ -188,4 +185,3 @@ function voltarHome(){
     document.querySelector(".criou").classList.remove("escondido");  
 }
     //mandar pra tela 1
-    
