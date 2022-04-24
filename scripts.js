@@ -1,5 +1,7 @@
 
 let quiz=[]
+let questions =[]
+let answers=[]
 
 //Funcoes da tela 1
 function criaQuizz() {  
@@ -9,11 +11,6 @@ function criaQuizz() {
     document.querySelector(".tela3-parte1").classList.remove("escondido");
     //Mandar pra tela 3
 }
-function selecionarQuizz(){
-    document.querySelector(".tela1").classList.add("escondido")
-    document.querySelector(".tela2").classList.remove("escondido")
-} 
-
 function carregarQuizz(){
    let promise = axios.get('https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes')
   
@@ -21,43 +18,90 @@ function carregarQuizz(){
     promise.catch(carregarErro)
 }
         function carregarSucesso(response)
-        {
-            
-         
+        {  
          let quiz= response.data;
           let lista =document.querySelector(".quizzes.prontos");
           lista.innerHTML="";
-          console.log(lista);
+          
                 for(let i=0;i<6;i++){
                     lista.innerHTML+=
-                    `<div id="${response.data[i].id}" class="quizz" onclick="selecionarQuizz()">
+                    `<div id="${response.data[i].id}" class="quizz" onclick="selecionarQuizz(this)">
                     <img src="${response.data[i].image}" >
-                    <h2>${response.data[i].title}</h2></div>`
-              
+                    <h2>${response.data[i].title}</h2>
+                    </div>`              
         }  
         quiz.sort(comparador)
       
         }
-function comparador(){
-    return Math.random() - 0.5;
-}    
-      
-        function carregarErro(){
-            console.log("deu ruim");
-        }
-function criaQuizz() {  
-    alert("Vamos criar um quizz");
-    document.querySelector(".tela1").classList.add("escondido");
-    document.querySelector(".corpoTela3").classList.remove("escondido");
-    document.querySelector(".tela3-parte1").classList.remove("escondido");
-    //Mandar pra tela 3
-}
-function selecionarQuizz(){
-    document.querySelector(".tela1").classList.add("escondido")
-    document.querySelector(".tela2").classList.remove("escondido")
+        function comparador(){
+            return Math.random() - 0.5;
+        }         
+
+function selecionarQuizz(elemento){
+  console.log(elemento)
+  let id =elemento.id
+  console.log(id)
+  let promise= axios.get(`https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes/${id}`)
+  promise.then(selecionarSucesso)
+  promise.catch(selecionarErro)
+    
+    
 } 
 
+        function selecionarSucesso(response){   
+          
+            let elemento= response.data  
+            renderizarCima(elemento)  
+            console.log(elemento)    
+            document.querySelector(".tela1").classList.add("escondido")
+            document.querySelector(".tela2").classList.remove("escondido")
 
+        }
+                function renderizarCima(elemento){ 
+                    renderizarBloco(elemento)
+                    let selecionado =document.querySelector(".tela2")
+                            selecionado.innerHTML="";               
+                            selecionado.innerHTML+=`            
+                                <div class="parteDeCima">
+                                    <img src="${elemento.image}">
+                                    <h2>${elemento.title}</h2>               
+                                </div>                         
+                            ` 
+                          
+                            console.log(elemento)                          
+                }
+               
+                function renderizarBloco(elemento){
+                    let block= document.querySelector(".block")
+                    let element = elemento.questions
+                    block.innerHTML="";  
+                   for(i=0;i<element.length;i++){
+                        block.innerHTML+=`      
+                        <div class="titulo-pergunta">          
+                                <h3>${element[i].title}</h3>            
+                        </div>  `    
+                                                     
+                    }
+                    console.log(block)
+                   
+
+                }
+
+            
+function selecionarErro(){
+    console.log("deu ruim")
+}
+function carregarErro(){
+    alert("deu ruim")
+}
+
+ function criaQuizz() {  
+            alert("Vamos criar um quizz");
+            document.querySelector(".tela1").classList.add("escondido");
+            document.querySelector(".corpoTela3").classList.remove("escondido");
+            document.querySelector(".tela3-parte1").classList.remove("escondido");
+            //Mandar pra tela 3
+}
 //Funcoes da tela 2
 function reiniciarQuizz(){
     alert("Reiniciando quizz")
