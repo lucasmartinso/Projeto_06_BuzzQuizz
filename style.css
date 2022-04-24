@@ -390,8 +390,14 @@ li.bloco > .pergunta-fechada h2{
 .opcao{
     margin: 20px;
     width: 329px;
-    height: 175px;
+    height: 175px; 
     background-color: #818181;
+}
+.opcao > img{
+  
+    width: 329px;
+    height: 175px; 
+
 }
 .nome-opcao{
     font-size: 20px;
@@ -498,11 +504,15 @@ li.bloco > .pergunta-fechada h2{
         height: 89px;
         margin-top: 18px;
     }
-    .opcao{
+    .opcao {
         width: 164px;
         height: 113px;
         margin: 6px;
         margin-top: 13px;
+    }
+    .opcao >img{
+        width: 164px;
+        height: 113px;
     }
     .nome-opcao{
         font-size: 18px;
