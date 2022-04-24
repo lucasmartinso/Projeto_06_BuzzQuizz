@@ -1,3 +1,6 @@
+
+let quiz=[]
+
 //Funcoes da tela 1
 function criaQuizz() {  
     alert("Vamos criar um quizz");
@@ -10,6 +13,38 @@ function selecionarQuizz(){
     document.querySelector(".tela1").classList.add("escondido")
     document.querySelector(".tela2").classList.remove("escondido")
 } 
+
+function carregarQuizz(){
+   let promise = axios.get('https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes')
+  
+    promise.then(carregarSucesso)
+    promise.catch(carregarErro)
+}
+        function carregarSucesso(response)
+        {
+            
+         
+         let quiz= response.data;
+          let lista =document.querySelector(".quizzes.prontos");
+          lista.innerHTML="";
+          console.log(lista);
+                for(let i=0;i<6;i++){
+                    lista.innerHTML+=
+                    `<div id="${response.data[i].id}" class="quizz" onclick="selecionarQuizz()">
+                    <img src="${response.data[i].image}" >
+                    <h2>${response.data[i].title}</h2></div>`
+              
+        }  
+        quiz.sort(comparador)
+      
+        }
+function comparador(){
+    return Math.random() - 0.5;
+}    
+      
+        function carregarErro(){
+            console.log("deu ruim");
+        }
 
 
 //Funcoes da tela 2
@@ -183,5 +218,6 @@ function voltarHome(){
     document.querySelector(".tela1").classList.remove("escondido");
     document.querySelector(".naoCriou").classList.add("escondido");
     document.querySelector(".criou").classList.remove("escondido");  
+    
 }
-    //mandar pra tela 1
+   
