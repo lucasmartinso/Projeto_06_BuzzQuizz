@@ -45,6 +45,17 @@ function comparador(){
         function carregarErro(){
             console.log("deu ruim");
         }
+function criaQuizz() {  
+    alert("Vamos criar um quizz");
+    document.querySelector(".tela1").classList.add("escondido");
+    document.querySelector(".corpoTela3").classList.remove("escondido");
+    document.querySelector(".tela3-parte1").classList.remove("escondido");
+    //Mandar pra tela 3
+}
+function selecionarQuizz(){
+    document.querySelector(".tela1").classList.add("escondido")
+    document.querySelector(".tela2").classList.remove("escondido")
+} 
 
 
 //Funcoes da tela 2
@@ -91,9 +102,9 @@ function gerarPerguntas() {
 
     for(let i=1; i<=numPerguntas; i++) { 
         lista.innerHTML += `
-            <li class="bloco" onclick="abrirPerguntas(this)">
+            <li class="bloco">
             <div class="pergunta-fechada ">
-                <h2>Pergunta ${i}</h2><ion-icon class="icone" name="create-outline"></ion-icon>
+                <h2>Pergunta ${i}</h2><ion-icon onclick="abrirPerguntas(this)" class="icone" name="create-outline"></ion-icon>
             </div>
             <div class="formacao">
         
@@ -124,9 +135,6 @@ function gerarPerguntas() {
 function abrirPerguntas(elemento){ 
     console.log(elemento); 
     const itemSelecionado = document.querySelector(".selecionado"); 
-    const seleca = document.querySelector(".formacao").classList.add(".selecionado"); 
-
-    console.log(seleca);
 
     if(itemSelecionado !== null) {  
         itemSelecionado.classList.remove("selecionado");
@@ -134,6 +142,10 @@ function abrirPerguntas(elemento){
     
     elemento.classList.add("selecionado");
     elemento.classList.remove("escondido");  
+
+    if(itemSelecionado) { 
+
+    }
 
     alert("Abrir aba das perguntas");
 }   
@@ -231,6 +243,5 @@ function voltarHome(){
     document.querySelector(".tela1").classList.remove("escondido");
     document.querySelector(".naoCriou").classList.add("escondido");
     document.querySelector(".criou").classList.remove("escondido");  
-    
 }
-   
+    //mandar pra tela 1
