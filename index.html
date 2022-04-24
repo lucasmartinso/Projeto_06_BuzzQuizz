@@ -9,12 +9,12 @@
     <link rel="shortcut icon" href="https://www.buzzfeed.com/obiwan-static/images/about/press-assets/BuzzFeed_Arrow.png"/>
     <title>BuzzQuizz</title>
 </head>
-<body> 
+<body onload="carregarQuizz()"> 
 
     <div class="cabecalho">BuzzQuizz</div>  
 
     <!-- TELA 1 -->
-   <div class="tela1  ">
+   <div class="tela1  " >
        <div class="naoCriou ">
            <h1>Voce nao criou nenhum quizz ainda :(</h1>
            <div onclick="criaQuizz()" class="criarQuizz">Criar Quizz</div>
@@ -25,19 +25,16 @@
                 <div onclick="criaQuizz()" class="mais">+</div>
             </div>
 
-            <div class="quizzes">
+            <div class="quizzes ">
                 <div class="quizz"><h2>Titulo do quizz</h2></div>
                 <div class="quizz"><h2>Titulo do quizz</h2></div>
                 <div class="quizz"><h2>Titulo do quizz</h2></div>
     
-       </div>
+            </div>
        </div>
        <div class="informacao"><h1>Todos os quizzes</h1></div>
-       <div class="quizzes">
-           <div class="quizz"onclick=" selecionarQuizz()"><h2>Titulo do quizz</h2></div>
-           <div class="quizz"onclick=" selecionarQuizz()"><h2>Titulo do quizz</h2></div>
-           <div class="quizz"onclick=" selecionarQuizz()"><h2>Titulo do quizz</h2></div>
-  
+       <div class="quizzes prontos">
+           
        </div>
 
 
