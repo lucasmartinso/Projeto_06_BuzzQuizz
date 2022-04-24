@@ -411,6 +411,10 @@ li.bloco > .pergunta-fechada h2{
     max-width: 328px;
     word-wrap: break-word;
  
+} 
+
+.selecionado { 
+    border: 3px solid red;
 }
 
 .escondido{display: none;} 

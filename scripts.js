@@ -22,11 +22,6 @@ function reiniciarQuizz(){
 
 
 //Funcoes da tela 3
-function abrirPerguntas(){
-    document.querySelector(".pergunta-fechada").classList.add("escondido")
-    document.querySelector(".formacao").classList.remove("escondido")
-    alert("Abrir aba das perguntas")
-}  
 
 function criarPerguntas(){  
     let titulo = document.querySelector("input.title").value;   
@@ -51,7 +46,7 @@ function criarPerguntas(){
        numNiveis= document.querySelector("input.numNiveis").value=""; 
        url = document.querySelector("input.url").value=""; 
    }   
-}
+} 
 
 
 function gerarPerguntas() { 
@@ -61,15 +56,14 @@ function gerarPerguntas() {
 
     for(let i=1; i<=numPerguntas; i++) { 
         lista.innerHTML += `
-            <li class="bloco">
+            <li class="bloco" onclick="abrirPerguntas(this)">
             <div class="pergunta-fechada ">
-                <h2>Pergunta ${i}</h2><ion-icon onclick="abrirPerguntas(this)" class="icone" name="create-outline"></ion-icon>
+                <h2>Pergunta ${i}</h2><ion-icon class="icone" name="create-outline"></ion-icon>
             </div>
-            <div class="formacao escondido">
+            <div class="formacao">
         
                 <div class="pergunta ">
                     
-                    <h2>Pergunta ${i}</h2>
                     <input class="textoPergunta" type="text" placeholder="    Texto da pergunta" required>
                     <input class="corFundo" type="text"placeholder="   Cor de fundo da pergunta" required>
                     <h2>Resposta correta</h2>
@@ -90,7 +84,26 @@ function gerarPerguntas() {
         </li>`
     }
 
-}
+} 
+
+function abrirPerguntas(elemento){ 
+    console.log(elemento); 
+    const itemSelecionado = document.querySelector(".selecionado"); 
+    const seleca = document.querySelector(".formacao").classList.add(".selecionado"); 
+
+    console.log(seleca);
+
+    if(itemSelecionado !== null) {  
+        itemSelecionado.classList.remove("selecionado");
+    }
+    
+    elemento.classList.add("selecionado");
+    elemento.classList.remove("escondido");  
+
+    alert("Abrir aba das perguntas");
+}   
+
+
 function criarNiveis(){ 
     let textoPergunta = document.querySelector(".pergunta > input.textoPergunta").value;
     let corFundo = document.querySelector(".pergunta > input.corFundo").value;
