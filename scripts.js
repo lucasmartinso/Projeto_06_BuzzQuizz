@@ -1,9 +1,4 @@
-
-let quiz=[]
-let questions =[]
-let answers=[] 
-
-let novoQuizz = [];
+let url4 = []; 
 
 
 //Funcoes da tela 1
@@ -138,9 +133,6 @@ function clicar(elemento){
     //fazer a mesma logica do abrir perguntas
 } 
 
-
-
-
 function selecionarErro(){
     console.log("deu ruim")
 }
@@ -202,8 +194,6 @@ function gerarPerguntas() {
     let lista = document.querySelector("ul.perguntitas"); 
     lista.innerHTML = ""; 
 
-    
-
     for(let i=1; i<=numPerguntas; i++) { 
         lista.innerHTML += `
             <li class="bloco" onclick="abrirPerguntas(this)">
@@ -249,65 +239,68 @@ function abrirPerguntas(elemento){
 }   
 
 
-function criarNiveis(){ 
-    let textoPergunta = document.querySelector(".pergunta > input.textoPergunta").value;
-    let corFundo = document.querySelector(".pergunta > input.corFundo").value;
-    let textoResposta1 = document.querySelector(".pergunta > input.respostaCorreta").value; 
-    let textoResposta2 = document.querySelector(".pergunta > input.respostaIncorreta1").value; 
-    let textoResposta3 = document.querySelector(".pergunta > input.respostaIncorreta2").value;
-    let textoResposta4 = document.querySelector(".pergunta > input.respostaIncorreta3").value; 
-    let url1 = document.querySelector(".pergunta > input.urlImg1").value;  
-    let url2 = document.querySelector(".pergunta > input.urlImg2").value;   
-    let url3 = document.querySelector(".pergunta > input.urlImg3").value;   
-    let url4 = document.querySelector(".pergunta > input.urlImg4").value;   
+function criarNiveis(){  
+    let numPerguntas = Number(document.querySelector("input.numPerguntas").value); 
+    let textoPergunta = document.querySelectorAll(".pergunta > input.textoPergunta");
+    let corFundo = document.querySelectorAll(".pergunta > input.corFundo");
+    let textoResposta1 = document.querySelectorAll(".pergunta > input.respostaCorreta"); 
+    let textoResposta2 = document.querySelectorAll(".pergunta > input.respostaIncorreta1"); 
+    let textoResposta3 = document.querySelectorAll(".pergunta > input.respostaIncorreta2");
+    let textoResposta4 = document.querySelectorAll(".pergunta > input.respostaIncorreta3"); 
+    let url1 = document.querySelectorAll(".pergunta > input.urlImg1");  
+    let url2 = document.querySelectorAll(".pergunta > input.urlImg2");   
+    let url3 = document.querySelectorAll(".pergunta > input.urlImg3");   
+    let url4 = document.querySelectorAll(".pergunta > input.urlImg4");      
 
-    let cor = "";
-    let corHex = "";  
+    for(let i=0; i<numPerguntas; i++) { 
+        url4[i]= url4[i].value;
+    }  
 
-    for(let i=0; i<corFundo.length; i++) { 
-        cor += corFundo[i].toUpperCase();
-    } 
+    
 
-    console.log(cor); 
-
-    for(let i=0; i<1 && cor[0]=== "#"; i++) { 
-        console.log("OLAAAAAAAA"); 
-        corHex = cor[0];
-        for(let j=1; j<7 && (cor[j]=== "A" || cor[j]=== "B" || cor[j]=== "C" || cor[j]=== "D" || cor[j]=== "E" || cor[j]=== "F"); j++) {
-            corHex += cor[j]; 
-        }
-    } 
-
-    console.log(corHex);
-
-    let https1= ""; 
+    let https1= []; 
     let https2= ""; 
     let https3= ""; 
-    let https4= "";
+    let https4= ""; 
 
-    for(let i=0; i<8; i++) { 
-        https1 += url1[i];
-    }   
-
-    for(let i=0; i<8; i++) { 
-        https2 += url2[i];
-    }  
-
-    for(let i=0; i<8; i++) { 
-        https3 += url3[i];
-    }  
-
-    for(let i=0; i<8; i++) { 
-        https4 += url4[i];
+    for(let j=0; j<numPerguntas; j++) {  
+        for(let i=0; i<8; i++) { 
+            https1[j] += url1[j].value[i];
+        }   
+    } 
+    
+    for(let j=0; j<numPerguntas; j++) {
+        for(let i=0; i<8; i++) { 
+            https2 += url2[j].value[i];
+        }  
     } 
 
-    if(textoPergunta.length>=20 && https1 === "https://" && https2 === "https://" && https3 === "https://" && https4 === "https://" && textoResposta1 !== "" && textoResposta2 !== "" && textoResposta3 !== "" && textoResposta4 !== "" && corHex.length === 7) {
-        document.querySelector(".tela3-parte2").classList.add("escondido");
-        document.querySelector(".tela3-parte3").classList.remove("escondido");
-        alert("Agora criar os niveis"); 
-        gerarNiveis();
-    } else { 
-        alert("PREENCHA NOVAMENTE\n\nTexto da pergunta tem que ter no mínimo 20 caracteres\nCor de fundo modelo Hexadecimal\nTexto das respostas tem que estar preenchidos\nObrigatória ao menos uma resposta errada");
+    for(let j=0; j<numPerguntas; j++) {
+        for(let i=0; i<8; i++) { 
+            https3 += url3[j].value[i];
+        }  
+    } 
+
+    for(let j=0; j<numPerguntas; j++) {
+        for(let i=0; i<8; i++) { 
+            https4 += url4[j].value[i];
+        }   
+    } 
+
+    for(let i=0; i<numPerguntas; i++) { 
+        console.log(https1[i]);
+    }
+    
+
+    for(let i=0; i<numPerguntas; i++) { 
+        if(textoPergunta[i].value.length>=20 && https1[i].value === "undefinedhttps://" && https2[i].value === "undefinedhttps://" && https3[i].value === "undefinedhttps://" && https4[i].value === "undefinedhttps://" && textoResposta1[i].value !== "" && textoResposta2[i].value !== "" && textoResposta3[i].value !== "" && textoResposta4[i].value !== "") {
+            document.querySelector(".tela3-parte2").classList.add("escondido");
+            document.querySelector(".tela3-parte3").classList.remove("escondido");
+            alert("Agora criar os niveis"); 
+            gerarNiveis();
+        } else { 
+            alert("PREENCHA NOVAMENTE\n\nTexto da pergunta tem que ter no mínimo 20 caracteres\nCor de fundo modelo Hexadecimal\nTexto das respostas tem que estar preenchidos\nObrigatória ao menos uma resposta errada");
+        } 
     }
 } 
 
@@ -349,10 +342,10 @@ function edicaoNiveis(elemento) {
 }
 
 function finalizarQuizz(){  
-    let titulo = document.querySelector(".niveis > input.tituloNivel").value;  
-    let porcentagem = Number(document.querySelector(".niveis > input.porcentagem").value); 
-    let url = document.querySelector(".niveis > input.urlNivel").value ;
-    let descricao = document.querySelector(".niveis > input.descricao").value ;  
+    let titulo = document.querySelectorAll(".niveis > input.tituloNivel").value;  
+    let porcentagem = Number(document.querySelectorAll(".niveis > input.porcentagem").value); 
+    let url = document.querySelectorAll(".niveis > input.urlNivel").value ;
+    let descricao = document.querySelectorAll(".niveis > input.descricao").value ;  
 
     https = "";
 
