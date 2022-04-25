@@ -1,9 +1,9 @@
 
-let quiz=[]
-let questions =[]
-let answers=[]
-
-
+let quiz=[];
+let questions = [];
+let levels = [];
+let answers = [];
+const userQuizesID = []; 
 //Funcoes da tela 1
 function criaQuizz() {  
     alert("Vamos criar um quizz");
@@ -32,7 +32,7 @@ function carregarQuizz(){
                     </div>`              
         }  
         quiz.sort(comparador)
-      
+    
         }
         function comparador(){
             return Math.random() - 0.5;
@@ -42,14 +42,11 @@ function carregarQuizz(){
 function selecionarQuizz(elemento){
   console.log(elemento)
   let id =elemento.id
-  console.log(id)
   let promise= axios.get(`https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes/${id}`)
   promise.then(selecionarSucesso )
   promise.catch(selecionarErro)
-    
-    
+  
 } 
-
         function selecionarSucesso(response){   
            
             let elemento= response.data  
@@ -70,7 +67,7 @@ function selecionarQuizz(elemento){
           
              for(let i=0; i<elemento.questions.length;i++){                  
                 let block =document.querySelector(".blocao")  
-                console.log(block)
+                
                 block.innerHTML+=`   
                 <div class="block ">
                         <div class="titulo-pergunta">          
@@ -86,12 +83,11 @@ function selecionarQuizz(elemento){
            
         }    
         function pegarOpcao(elemento){
-            console.log(elemento)           
+                  
             let respostas = document.querySelectorAll(".respostas")
-            console.log(respostas)
+           
             for(let i=0 ; i<respostas.length;i++){
                 for(let j=0 ; j<elemento.questions[i].answers.length ; j++){
-                   console.log(elemento.questions[i].answers.length )
                   respostas[i].innerHTML+=` 
                    <div class="opcao resposta${i}"   onclick="clicar(this)">
                   <img src="${elemento.questions[i].answers[j].image}" />
@@ -107,11 +103,7 @@ function selecionarQuizz(elemento){
  //--------------------------------------------------------------//               
        
               
-function mostrarResultado(){
-    //se todas as questoes foram marcadas
-    document.querySelector(".final").classList.remove("escondido")
-    document.querySelector(".botoes").classList.remove("escondido")
-}
+
 /*FUNCAO CLICAR:
 -Ao clicar num elemento todos os outros devem adquirir a classe esbranquicado
 -So pode haver 1 item clicado 
@@ -119,22 +111,21 @@ function mostrarResultado(){
 */
 function clicar(elemento){
   
-  
+            console.log(elemento)
             const clicado = document.querySelector(".opcao.clicado") 
             if(clicado != null){
                 clicado.classList.remove("clicado")     
             
             }
             elemento.classList.add("clicado")
-        
-           
- 
-    
-   
-  
+
     //fazer a mesma logica do abrir perguntas
 } 
-
+function mostrarResultado(){
+    //se todas as questoes foram marcadas
+    document.querySelector(".final").classList.remove("escondido")
+    document.querySelector(".botoes").classList.remove("escondido")
+}
 
 
 
@@ -370,9 +361,40 @@ function acessarQuizz(){
 }
 function voltarHome(){
     alert("voltando pra home")
+    location.reload()
     document.querySelector(".tela2").classList.add("escondido");
     document.querySelector(".tela1").classList.remove("escondido");
     document.querySelector(".naoCriou").classList.add("escondido");
     document.querySelector(".criou").classList.remove("escondido");  
+}
+/*----------------------------------------------------------------------------- */
+
+
+function mandarQuiz(){
+    const quiz = {
+        title: document.querySelector(""),
+        image: "",
+        questions: [],
+        levels: []
+        };
+    let promise=axios.post("https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes",quiz)
+    promise.then(mandarSucesso)
+    promise.catch(mandarErro)
+    quizCriado(response.data.id)
+
+}
+
+function mandarSucesso(){
+console.log("deu bom")
+
+
+}
+function mandarErro(){
+    console.log("deu ruim")
+}
+
+
+function quizCriado(){
+    
 }
     //mandar pra tela 1
