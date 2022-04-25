@@ -159,11 +159,11 @@ function gerarPerguntas() {
 
     for(let i=1; i<=numPerguntas; i++) { 
         lista.innerHTML += `
-            <li class="bloco">
+            <li class="bloco" onclick="abrirPerguntas(this)">
             <div class="pergunta-fechada ">
-                <h2>Pergunta ${i}</h2><ion-icon onclick="abrirPerguntas(this)" class="icone" name="create-outline"></ion-icon>
+                <h2>Pergunta ${i}</h2><ion-icon  class="icone" name="create-outline"></ion-icon>
             </div>
-            <div class="formacao">
+            <div class="formacao escondido">
         
                 <div class="pergunta ">
                     
@@ -171,17 +171,17 @@ function gerarPerguntas() {
                     <input class="corFundo" type="text"placeholder="   Cor de fundo da pergunta" required>
                     <h2>Resposta correta</h2>
                     <input class="respostaCorreta" type="text" placeholder="  Resposta correta" required>
-                    <input class="urlImg" type="text"placeholder="  URL da imagem" required>
+                    <input class="urlImg1" type="text"placeholder="  URL da imagem" required>
                     <h2>Respostas incorretas</h2>
                 
                     <input class="respostaIncorreta1" type="text" placeholder="  Resposta incorreta 1" required>
-                    <input type="text"placeholder="  URL da imagem 1" required>
+                    <input class="urlImg2" type="text"placeholder="  URL da imagem 1" required>
                     <div class="conjunto"></div>
                     <input class="respostaIncorreta2" type="text" placeholder="  Resposta incorreta 2" required>
-                    <input type="text"placeholder="  URL da imagem 2" required>
+                    <input class="urlImg3" type="text"placeholder="  URL da imagem 2" required>
                     <div class="conjunto"></div>
                     <input class="respostaIncorreta3" type="text" placeholder="  Resposta incorreta 3" required>
-                    <input type="text"placeholder="  URL da imagem 3" required>
+                    <input class="urlImg4" type="text"placeholder="  URL da imagem 3" required>
                 </div>
             </div>
         </li>`
@@ -194,17 +194,12 @@ function abrirPerguntas(elemento){
     const itemSelecionado = document.querySelector(".selecionado"); 
 
     if(itemSelecionado !== null) {  
-        itemSelecionado.classList.remove("selecionado");
+        itemSelecionado.classList.remove("selecionado"); 
+        itemSelecionado.querySelector(".formacao").classList.add("escondido");
     }
     
-    elemento.classList.add("selecionado");
-    elemento.classList.remove("escondido");  
-
-    if(itemSelecionado) { 
-
-    }
-
-    alert("Abrir aba das perguntas");
+    elemento.classList.add("selecionado");  
+    elemento.querySelector(".formacao").classList.remove("escondido");  
 }   
 
 
@@ -215,7 +210,10 @@ function criarNiveis(){
     let textoResposta2 = document.querySelector(".pergunta > input.respostaIncorreta1").value; 
     let textoResposta3 = document.querySelector(".pergunta > input.respostaIncorreta2").value;
     let textoResposta4 = document.querySelector(".pergunta > input.respostaIncorreta3").value; 
-    let url = document.querySelector(".pergunta > input.urlImg").value;  
+    let url1 = document.querySelector(".pergunta > input.urlImg1").value;  
+    let url2 = document.querySelector(".pergunta > input.urlImg2").value;   
+    let url3 = document.querySelector(".pergunta > input.urlImg3").value;   
+    let url4 = document.querySelector(".pergunta > input.urlImg4").value;   
 
     let cor = "";
     let corHex = "";  
@@ -236,13 +234,28 @@ function criarNiveis(){
 
     console.log(corHex);
 
-    let https= "";
+    let https1= ""; 
+    let https2= ""; 
+    let https3= ""; 
+    let https4= "";
 
     for(let i=0; i<8; i++) { 
-        https += url[i];
+        https1 += url1[i];
+    }   
+
+    for(let i=0; i<8; i++) { 
+        https2 += url2[i];
+    }  
+
+    for(let i=0; i<8; i++) { 
+        https3 += url3[i];
+    }  
+
+    for(let i=0; i<8; i++) { 
+        https4 += url4[i];
     } 
 
-    if(textoPergunta.length>=20 && https === "https://" && textoResposta1 !== "" && textoResposta2 !== "" && textoResposta3 !== "" && textoResposta4 !== "" && corHex.length === 7) {
+    if(textoPergunta.length>=20 && https1 === "https://" && https2 === "https://" && https3 === "https://" && https4 === "https://" && textoResposta1 !== "" && textoResposta2 !== "" && textoResposta3 !== "" && textoResposta4 !== "" && corHex.length === 7) {
         document.querySelector(".tela3-parte2").classList.add("escondido");
         document.querySelector(".tela3-parte3").classList.remove("escondido");
         alert("Agora criar os niveis"); 
@@ -254,37 +267,59 @@ function criarNiveis(){
 
 function gerarNiveis(){
     let numNiveis= Number(document.querySelector("input.numNiveis").value); 
-    let lista = document.querySelector("ul.niveis"); 
+    let lista = document.querySelector("ul.nivelzada"); 
     lista.innerHTML = ""; 
 
     for(let i=1; i<=numNiveis; i++) { 
         lista.innerHTML += `
-        <li class="bloco">
+        <li class="bloco" onclick="edicaoNiveis(this)">
             <div class="nivel-fechado  ">
-                <h2>Nivel ${i}</h2><ion-icon onclick="edicaoNiveis()" class="icone" name="create-outline"></ion-icon>
+                <h2>Nivel ${i}</h2><ion-icon class="icone" name="create-outline"></ion-icon>
             </div>
             <div class="niveis escondido">
                 <h2>Nivel ${i}</h2>
-                <input type="text" placeholder="    Titulo do nivel" required>
-                <input type="text"placeholder="   % de acerto minima" required>
-                <input type="text" placeholder="    URL da imagem do nivel" required>
-                <input type="text"placeholder="   Descricao do nivel" required>
+                <input class="tituloNivel" type="text" placeholder="    Titulo do nivel" required>
+                <input class="porcentagem" type="text"placeholder="   % de acerto minima" required>
+                <input class="urlNivel" type="text" placeholder="    URL da imagem do nivel" required>
+                <input class="descricao" type="text"placeholder="   Descricao do nivel" required>
 
             </div> 
-        <li class="bloco">`
+        </li>`
     }
 }  
 
-function edicaoNiveis() { 
-    document.querySelector(".nivel-fechado").classList.add("escondido");
-    document.querySelector(".niveis").classList.remove("escondido");
-    alert("Abrir aba dos niveis");
+function edicaoNiveis(elemento) {  
+    console.log(elemento); 
+    const itemSelecionado = document.querySelector(".selecionado"); 
+
+    if(itemSelecionado !== null) {  
+        itemSelecionado.classList.remove("selecionado"); 
+        itemSelecionado.querySelector(".niveis").classList.add("escondido"); 
+    }
+    
+    elemento.classList.add("selecionado");  
+    elemento.querySelector(".niveis").classList.remove("escondido");   
 }
 
-function finalizarQuizz(){
-    document.querySelector(".tela3-parte3").classList.add("escondido")
-    document.querySelector(".tela3-parte4").classList.remove("escondido")
-    alert("finalizando quizz")
+function finalizarQuizz(){  
+    let titulo = document.querySelector(".niveis > input.tituloNivel").value;  
+    let porcentagem = Number(document.querySelector(".niveis > input.porcentagem").value); 
+    let url = document.querySelector(".niveis > input.urlNivel").value ;
+    let descricao = document.querySelector(".niveis > input.descricao").value ;  
+
+    https = "";
+
+    for(let i=0; i<8; i++) { 
+        https += url[i];
+    }   
+    
+    if(titulo.length>=10 && (porcentagem>=0 && porcentagem<=100) && https==="https://" && descricao.length>=30) {
+        document.querySelector(".tela3-parte3").classList.add("escondido")
+        document.querySelector(".tela3-parte4").classList.remove("escondido")
+        alert("finalizando quizz") 
+    } else { 
+        alert("PREENCHA NOVAMENTE!!!\n\nTitulo tem que ter pelo menos 10 caracteres\nPorcentagem tem que ser de 0% a 100%\nImagem em formato url\nDescricao com pelo menos 30 caracteres");
+    }
 } 
 
 function acessarQuizz(){

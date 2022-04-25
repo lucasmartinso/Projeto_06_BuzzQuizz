@@ -132,7 +132,9 @@ margin: 12px 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: center; 
+    width: 100%; 
+    height: 100%;
 
 }
 .tela2{
@@ -141,7 +143,7 @@ margin: 12px 15px;
     justify-content: center;
     align-items: center;
 
-}
+} 
 
 .tela3-parte1 ,.tela3-parte2 ,.tela3-parte3 ,.tela3-parte4{ 
     display: flex;
@@ -150,7 +152,8 @@ margin: 12px 15px;
     align-items: center;
     width: 100%; 
     height: 100%;
-}
+} 
+
 .criacao{
     display: flex;
     align-items: center;
@@ -239,7 +242,8 @@ li.bloco > .formacao{
     height: 32px;
     width: 100px;
 }
-.niveis{
+.niveis{ 
+    padding-top: 27px;
     width: 600px;
     height: 316px;
     background-color: #ffffff;
@@ -295,7 +299,7 @@ li.bloco > .formacao{
 .voltar :hover{
     cursor: pointer;
 }
-.icone :hover{
+.pergunta-fechada > .icone:hover{
     cursor: pointer;
 }
 li.bloco > .pergunta-fechada , .nivel-fechado  {
