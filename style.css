@@ -45,6 +45,7 @@ body {
     text-align: center;
     color: #b9B9B9;
     font-size: 20px;
+    word-wrap: break-word;
 }
 .criarQuizz:hover{
     cursor: pointer;
@@ -75,6 +76,7 @@ body {
     font-size: 20px;
     color: #000000;
     font-weight: bold;
+    word-wrap: break-word;
   
 }
 .quizzes{
@@ -104,7 +106,7 @@ margin: 12px 15px;
     left: 10px;
     color: #ffffff;
     font-size: 19px;
-    word-break: break-all;
+    word-wrap: break-word;
 }
 
 .mais:hover{
@@ -162,6 +164,7 @@ margin: 12px 15px;
     font-size: 23px;
     color:black;
     font-weight: bold;
+    word-wrap: break-word;
 
 }
 .infos{
@@ -215,6 +218,7 @@ li.bloco > .formacao{
     margin-left: 17px;
     margin-top: 27px;
     margin-bottom: 15px;
+    word-wrap: break-word;
 }
 .pergunta > input{
     margin-left: 16px;
@@ -260,6 +264,7 @@ li.bloco > .formacao{
     margin-left: 17px;
     margin-top: 27px;
     margin-bottom: 15px;
+    word-wrap: break-word;
 }
 .imagem-quizz{
     width: 500px;
@@ -274,6 +279,7 @@ li.bloco > .formacao{
     left: 23px;
     font-size: 23px;
     color: #FFFFFF;
+    word-wrap: break-word;
 }
 .acessar{
     width: 220px;
@@ -284,6 +290,7 @@ li.bloco > .formacao{
     color: #818181;
     font-size: 21px;
     margin-bottom: 30px;
+    word-wrap: break-word;
 }
 .voltar :hover{
     cursor: pointer;
@@ -312,7 +319,7 @@ li.bloco > .pergunta-fechada h2{
     font-size: 20px;
     font-weight: bold;
     margin-left: 17px;
-
+    word-wrap: break-word;
 }
 .icone{
     width: 26px;
@@ -343,7 +350,7 @@ li.bloco > .pergunta-fechada h2{
     position: absolute;
     font-size: 39px;
     color: white;
-    word-break: break-word;
+    word-wrap: break-word;
 }
 .parteDeBaixo{
     display: flex;
@@ -374,12 +381,14 @@ li.bloco > .pergunta-fechada h2{
     font-size: 23px;
    color: white;
     font-weight: bold;
+    word-wrap: break-word;
  
 }
 .titulo-final h3{
     font-size: 23px;
     color: white;
     font-weight: bold;
+    word-wrap: break-word;
 }
 .respostas{
    display: flex;
@@ -387,6 +396,7 @@ li.bloco > .pergunta-fechada h2{
    justify-content: center;
    align-items: center;
 }
+
 .opcao{
     margin: 20px;
     width: 329px;
@@ -494,6 +504,9 @@ li.bloco > .pergunta-fechada h2{
     }
     .titulo-final h3, .titulo-pergunta h3{
         font-size: 19px;
+        word-wrap: break-word;
+
+
     }
     .titulo-final{
         height: 99px;
@@ -557,6 +570,7 @@ li.bloco > .pergunta-fechada h2{
     }
     .texto h3{
         font-size: 18px;
+        word-wrap: break-word;
     }
       /* tela3-parte 3*/
       li.bloco > .pergunta-fechada{
@@ -573,6 +587,7 @@ li.bloco > .pergunta-fechada h2{
     }
     .imagem-quizz h2{
         font-size: 19px;
+        word-wrap: break-word;
     }
     .voltar h2 {
         font-size: 18px;

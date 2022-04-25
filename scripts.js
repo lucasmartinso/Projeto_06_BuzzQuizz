@@ -51,15 +51,14 @@ function selecionarQuizz(elemento){
         function selecionarSucesso(response){   
             
             let elemento= response.data  
-            renderizarCima (elemento)
-          
-            console.log(elemento)    
+           
+            renderizarCima (elemento)   
             document.querySelector(".tela1").classList.add("escondido")
             document.querySelector(".tela2").classList.remove("escondido")
 
         }
-                function renderizarCima(elemento){ 
-                    renderizarBloco(elemento)
+         function renderizarCima(elemento){ 
+                    pegarRespostas(elemento)
                     let selecionado =document.querySelector(".parteDeCima")
                     selecionado.innerHTML="";               
                     selecionado.innerHTML+=`            
@@ -69,27 +68,39 @@ function selecionarQuizz(elemento){
                                                    
                          
                             `                                   
-                }
-
-                function renderizarBloco(elemento){
-                    let block =document.querySelector(".block")
-                            block.innerHTML+=`  
+        }
+ function pegarRespostas(elemento) {
+                    
+                     let block =document.querySelector(".blocao")
+                     
+                     for(let i=0; i<elemento.questions.length;i++){  
+                        block.innerHTML+=` 
+                        <div class="block">
                             <div class="titulo-pergunta">          
-                            <h3>${elemento.questions[0].title}<h3>            
-                        </div>      
-                        <div class="respostas">   
-                        <div class="primeira">
+                                <h3>${elemento.questions[i].title}<h3>            
+                            </div>
+                            <div class="respostas"> 
+                        
+                            </div>                           
+                       </div>    
+                            `                    
+                    let respostas=document.querySelector(".respostas")
+                    for(let j= 0 ; j<elemento.questions[i].answers.length;j++){
+                        respostas.innerHTML+=`  
                         <div class="opcao">
-                        <img src="${elemento.questions[0].answers[0].image}" />
-                        </div>
-                        <div class="nome-opcao">${elemento.questions[0].answers[0].text}</div>
-                        </div>   
-                            `
-
-                                console.log(block)
-                                
+                        <img src="${elemento.questions[i].answers[j].image}" />
+                        <div class="nome-opcao">${elemento.questions[i].answers[j].text}
+                        </div>     
+                    `                                                    
+                    } 
+                  
+                    console.log(block)  
                 }
-          
+               
+                }               
+              
+
+                
 function selecionarErro(){
     console.log("deu ruim")
 }
