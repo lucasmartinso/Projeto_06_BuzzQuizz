@@ -194,6 +194,8 @@ function gerarPerguntas() {
     let lista = document.querySelector("ul.perguntitas"); 
     lista.innerHTML = ""; 
 
+    
+
     for(let i=1; i<=numPerguntas; i++) { 
         lista.innerHTML += `
             <li class="bloco" onclick="abrirPerguntas(this)">
