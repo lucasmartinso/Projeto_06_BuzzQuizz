@@ -259,9 +259,9 @@ function criarNiveis(){
     
 
     let https1= []; 
-    let https2= ""; 
-    let https3= ""; 
-    let https4= ""; 
+    let https2= []; 
+    let https3= []; 
+    let https4= []; 
 
     for(let j=0; j<numPerguntas; j++) {  
         for(let i=0; i<8; i++) { 
@@ -271,24 +271,25 @@ function criarNiveis(){
     
     for(let j=0; j<numPerguntas; j++) {
         for(let i=0; i<8; i++) { 
-            https2 += url2[j].value[i];
+            https2[j] += url2[j].value[i];
         }  
     } 
 
     for(let j=0; j<numPerguntas; j++) {
         for(let i=0; i<8; i++) { 
-            https3 += url3[j].value[i];
+            https3[j] += url3[j].value[i];
         }  
     } 
 
     for(let j=0; j<numPerguntas; j++) {
         for(let i=0; i<8; i++) { 
-            https4 += url4[j].value[i];
+            https4[j] += url4[j].value[i];
         }   
     } 
 
     for(let i=0; i<numPerguntas; i++) { 
-        console.log(https1[i]);
+        console.log(https4[i]); 
+        console.log(textoResposta1[i]);
     }
     
 
