@@ -4,6 +4,9 @@ let questions = [];
 let levels = [];
 let answers = [];
 const userQuizesID = []; 
+
+
+
 //Funcoes da tela 1
 function criaQuizz() {  
     alert("Vamos criar um quizz");
@@ -11,7 +14,8 @@ function criaQuizz() {
     document.querySelector(".corpoTela3").classList.remove("escondido");
     document.querySelector(".tela3-parte1").classList.remove("escondido");
     //Mandar pra tela 3
-}
+} 
+
 function carregarQuizz(){
    let promise = axios.get('https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes')
   
@@ -91,7 +95,12 @@ function selecionarQuizz(elemento){
                   respostas[i].innerHTML+=` 
                    <div class="opcao resposta${i}"   onclick="clicar(this)">
                   <img src="${elemento.questions[i].answers[j].image}" />
-                  <div class="nome-opcao" ><h3>${elemento.questions[i].answers[j].text}</h3>
+                  <div  const clicado = document.querySelector(".opcao.clicado") 
+                  if(clicado != null){
+                      clicado.classList.remove("clicado")     
+                  
+                  }
+                  elemento.classList.add("clicado")class="nome-opcao" ><h3>${elemento.questions[i].answers[j].text}</h3>
                   </div>  
            </div> `
                 }
@@ -159,7 +168,12 @@ function criarPerguntas(){
     let numPerguntas = Number(document.querySelector("input.numPerguntas").value); 
     let numNiveis= Number(document.querySelector("input.numNiveis").value); 
     let url = document.querySelector("input.url").value; 
-    let https= "";
+    let https= ""; 
+
+    let capaQuizz = { 
+        title: titulo,
+        image: url
+    };
 
     for(let i=0; i<8; i++) { 
         https += url[i];
@@ -184,8 +198,6 @@ function gerarPerguntas() {
     let numPerguntas = Number(document.querySelector("input.numPerguntas").value); 
     let lista = document.querySelector("ul.perguntitas"); 
     lista.innerHTML = ""; 
-
-    
 
     for(let i=1; i<=numPerguntas; i++) { 
         lista.innerHTML += `
@@ -220,7 +232,6 @@ function gerarPerguntas() {
 } 
 
 function abrirPerguntas(elemento){ 
-    console.log(elemento); 
     const itemSelecionado = document.querySelector(".selecionado"); 
 
     if(itemSelecionado !== null) {  
@@ -233,65 +244,68 @@ function abrirPerguntas(elemento){
 }   
 
 
-function criarNiveis(){ 
-    let textoPergunta = document.querySelector(".pergunta > input.textoPergunta").value;
-    let corFundo = document.querySelector(".pergunta > input.corFundo").value;
-    let textoResposta1 = document.querySelector(".pergunta > input.respostaCorreta").value; 
-    let textoResposta2 = document.querySelector(".pergunta > input.respostaIncorreta1").value; 
-    let textoResposta3 = document.querySelector(".pergunta > input.respostaIncorreta2").value;
-    let textoResposta4 = document.querySelector(".pergunta > input.respostaIncorreta3").value; 
-    let url1 = document.querySelector(".pergunta > input.urlImg1").value;  
-    let url2 = document.querySelector(".pergunta > input.urlImg2").value;   
-    let url3 = document.querySelector(".pergunta > input.urlImg3").value;   
-    let url4 = document.querySelector(".pergunta > input.urlImg4").value;   
+function criarNiveis(){  
+    let numPerguntas = Number(document.querySelector("input.numPerguntas").value); 
+    let textoPergunta = document.querySelectorAll(".pergunta > input.textoPergunta");
+    let corFundo = document.querySelectorAll(".pergunta > input.corFundo");
+    let textoResposta1 = document.querySelectorAll(".pergunta > input.respostaCorreta"); 
+    let textoResposta2 = document.querySelectorAll(".pergunta > input.respostaIncorreta1"); 
+    let textoResposta3 = document.querySelectorAll(".pergunta > input.respostaIncorreta2");
+    let textoResposta4 = document.querySelectorAll(".pergunta > input.respostaIncorreta3"); 
+    let url1 = document.querySelectorAll(".pergunta > input.urlImg1");  
+    let url2 = document.querySelectorAll(".pergunta > input.urlImg2");   
+    let url3 = document.querySelectorAll(".pergunta > input.urlImg3");   
+    let url4 = document.querySelectorAll(".pergunta > input.urlImg4");      
 
-    let cor = "";
-    let corHex = "";  
+    for(let i=0; i<numPerguntas; i++) { 
+        url4[i]= url4[i].value;
+    }  
 
-    for(let i=0; i<corFundo.length; i++) { 
-        cor += corFundo[i].toUpperCase();
-    } 
+    
 
-    console.log(cor); 
-
-    for(let i=0; i<1 && cor[0]=== "#"; i++) { 
-        console.log("OLAAAAAAAA"); 
-        corHex = cor[0];
-        for(let j=1; j<7 && (cor[j]=== "A" || cor[j]=== "B" || cor[j]=== "C" || cor[j]=== "D" || cor[j]=== "E" || cor[j]=== "F"); j++) {
-            corHex += cor[j]; 
-        }
-    } 
-
-    console.log(corHex);
-
-    let https1= ""; 
+    let https1= []; 
     let https2= ""; 
     let https3= ""; 
-    let https4= "";
+    let https4= ""; 
 
-    for(let i=0; i<8; i++) { 
-        https1 += url1[i];
-    }   
-
-    for(let i=0; i<8; i++) { 
-        https2 += url2[i];
-    }  
-
-    for(let i=0; i<8; i++) { 
-        https3 += url3[i];
-    }  
-
-    for(let i=0; i<8; i++) { 
-        https4 += url4[i];
+    for(let j=0; j<numPerguntas; j++) {  
+        for(let i=0; i<8; i++) { 
+            https1[j] += url1[j].value[i];
+        }   
+    } 
+    
+    for(let j=0; j<numPerguntas; j++) {
+        for(let i=0; i<8; i++) { 
+            https2 += url2[j].value[i];
+        }  
     } 
 
-    if(textoPergunta.length>=20 && https1 === "https://" && https2 === "https://" && https3 === "https://" && https4 === "https://" && textoResposta1 !== "" && textoResposta2 !== "" && textoResposta3 !== "" && textoResposta4 !== "" && corHex.length === 7) {
-        document.querySelector(".tela3-parte2").classList.add("escondido");
-        document.querySelector(".tela3-parte3").classList.remove("escondido");
-        alert("Agora criar os niveis"); 
-        gerarNiveis();
-    } else { 
-        alert("PREENCHA NOVAMENTE\n\nTexto da pergunta tem que ter no mínimo 20 caracteres\nCor de fundo modelo Hexadecimal\nTexto das respostas tem que estar preenchidos\nObrigatória ao menos uma resposta errada");
+    for(let j=0; j<numPerguntas; j++) {
+        for(let i=0; i<8; i++) { 
+            https3 += url3[j].value[i];
+        }  
+    } 
+
+    for(let j=0; j<numPerguntas; j++) {
+        for(let i=0; i<8; i++) { 
+            https4 += url4[j].value[i];
+        }   
+    } 
+
+    for(let i=0; i<numPerguntas; i++) { 
+        console.log(https1[i]);
+    }
+    
+
+    for(let i=0; i<numPerguntas; i++) { 
+        if(textoPergunta[i].value.length>=20 && https1[i].value === "undefinedhttps://" && https2[i].value === "undefinedhttps://" && https3[i].value === "undefinedhttps://" && https4[i].value === "undefinedhttps://" && textoResposta1[i].value !== "" && textoResposta2[i].value !== "" && textoResposta3[i].value !== "" && textoResposta4[i].value !== "") {
+            document.querySelector(".tela3-parte2").classList.add("escondido");
+            document.querySelector(".tela3-parte3").classList.remove("escondido");
+            alert("Agora criar os niveis"); 
+            gerarNiveis();
+        } else { 
+            alert("PREENCHA NOVAMENTE\n\nTexto da pergunta tem que ter no mínimo 20 caracteres\nCor de fundo modelo Hexadecimal\nTexto das respostas tem que estar preenchidos\nObrigatória ao menos uma resposta errada");
+        } 
     }
 } 
 
@@ -319,23 +333,24 @@ function gerarNiveis(){
 }  
 
 function edicaoNiveis(elemento) {  
-    console.log(elemento); 
     const itemSelecionado = document.querySelector(".selecionado"); 
 
     if(itemSelecionado !== null) {  
         itemSelecionado.classList.remove("selecionado"); 
-        itemSelecionado.querySelector(".niveis").classList.add("escondido"); 
+        itemSelecionado.querySelector(".niveis").classList.add("escondido");  
+        itemSelecionado.querySelector(".nivel-fechado").classList.remove("escondido"); 
     }
     
     elemento.classList.add("selecionado");  
-    elemento.querySelector(".niveis").classList.remove("escondido");   
+    elemento.querySelector(".niveis").classList.remove("escondido"); 
+    elemento.querySelector(".nivel-fechado").classList.add("escondido");  
 }
 
 function finalizarQuizz(){  
-    let titulo = document.querySelector(".niveis > input.tituloNivel").value;  
-    let porcentagem = Number(document.querySelector(".niveis > input.porcentagem").value); 
-    let url = document.querySelector(".niveis > input.urlNivel").value ;
-    let descricao = document.querySelector(".niveis > input.descricao").value ;  
+    let titulo = document.querySelectorAll(".niveis > input.tituloNivel").value;  
+    let porcentagem = Number(document.querySelectorAll(".niveis > input.porcentagem").value); 
+    let url = document.querySelectorAll(".niveis > input.urlNivel").value ;
+    let descricao = document.querySelectorAll(".niveis > input.descricao").value ;  
 
     https = "";
 
@@ -345,12 +360,25 @@ function finalizarQuizz(){
     
     if(titulo.length>=10 && (porcentagem>=0 && porcentagem<=100) && https==="https://" && descricao.length>=30) {
         document.querySelector(".tela3-parte3").classList.add("escondido")
-        document.querySelector(".tela3-parte4").classList.remove("escondido")
+        document.querySelector(".tela3-parte4").classList.remove("escondido") 
         alert("finalizando quizz") 
+        renderizaSucessoQuizz();
     } else { 
         alert("PREENCHA NOVAMENTE!!!\n\nTitulo tem que ter pelo menos 10 caracteres\nPorcentagem tem que ser de 0% a 100%\nImagem em formato url\nDescricao com pelo menos 30 caracteres");
     }
 } 
+
+
+function renderizaSucessoQuizz() { 
+    let titulo = document.querySelector("input.title").value;   
+    let url = document.querySelector("input.url").value;   
+    console.log(url); 
+    console.log(titulo);
+    document.querySelector(".imagem-quizz").innerHTML = `
+        <img src="${url}"/> 
+        <h2>${titulo}</h2>
+        `; 
+}
 
 function acessarQuizz(){
     document.querySelector(".tela3-parte4").classList.add("escondido")

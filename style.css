@@ -45,7 +45,7 @@ body {
     text-align: center;
     color: #b9B9B9;
     font-size: 20px;
-    word-break: break-word;
+    word-wrap: break-word;
 }
 .criarQuizz:hover{
     cursor: pointer;
@@ -76,7 +76,7 @@ body {
     font-size: 20px;
     color: #000000;
     font-weight: bold;
-    word-break: break-word;
+    word-wrap: break-word;
   
 }
 .quizzes{
@@ -107,7 +107,7 @@ border-radius: 5px;
     left: 10px;
     color: #ffffff;
     font-size: 19px;
-    word-break: break-word;
+    word-wrap: break-word;
 }
 
 .mais:hover{
@@ -166,7 +166,7 @@ border-radius: 5px;
     font-size: 23px;
     color:black;
     font-weight: bold;
-    word-break: break-word;
+    word-wrap: break-word;
 
 }
 .infos{
@@ -220,7 +220,7 @@ li.bloco > .formacao{
     margin-left: 17px;
     margin-top: 27px;
     margin-bottom: 15px;
-    word-break: break-word;
+    word-wrap: break-word;
 }
 .pergunta > input{
     margin-left: 16px;
@@ -242,12 +242,12 @@ li.bloco > .formacao{
     width: 100px;
 }
 .niveis{ 
-    padding-top: 27px;
+    padding-top: 5px;
     width: 600px;
     height: 316px;
     background-color: #ffffff;
     margin: 0 auto;
-}
+} 
 .niveis > input{
    
         margin-left: 16px;
@@ -267,7 +267,7 @@ li.bloco > .formacao{
     margin-left: 17px;
     margin-top: 27px;
     margin-bottom: 15px;
-    word-break: break-word;
+    word-wrap: break-word;
 }
 .imagem-quizz{
     width: 500px;
@@ -282,25 +282,18 @@ li.bloco > .formacao{
     left: 23px;
     font-size: 23px;
     color: #FFFFFF;
-    word-break: break-word;
+    word-wrap: break-word;
 }
 .acessar{
     width: 220px;
     height: 44px;
 }
-.botoes{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 .voltar h2{
     margin-top: 19px;
     color: #818181;
     font-size: 21px;
     margin-bottom: 30px;
-    word-break: break-word;
+    word-wrap: break-word;
 }
 .voltar :hover{
     cursor: pointer;
@@ -329,7 +322,7 @@ li.bloco > .pergunta-fechada h2{
     font-size: 20px;
     font-weight: bold;
     margin-left: 17px;
-    word-break: break-word;
+    word-wrap: break-word;
 }
 .icone{
     width: 26px;
@@ -360,7 +353,7 @@ li.bloco > .pergunta-fechada h2{
     position: absolute;
     font-size: 39px;
     color: white;
-    word-break: break-word;
+    word-wrap: break-word;
 }
 .parteDeBaixo{
     display: flex;
@@ -374,7 +367,6 @@ li.bloco > .pergunta-fechada h2{
     width: 759px;
     height: 676px;
     margin-top: 42px;
-    padding: 1px
    
 }
 
@@ -392,15 +384,14 @@ li.bloco > .pergunta-fechada h2{
     font-size: 23px;
    color: white;
     font-weight: bold;
-    max-width: 668px;
-    word-break: break-word;
+    word-wrap: break-word;
  
 }
 .titulo-final h3{
     font-size: 23px;
     color: white;
     font-weight: bold;
-    word-break: break-word;
+    word-wrap: break-word;
 }
 .respostas{
    display: flex;
@@ -421,25 +412,11 @@ li.bloco > .pergunta-fechada h2{
     height: 175px; 
 
 }
-.opcao:hover{
-    cursor: pointer;
-}
-
 .nome-opcao{
-   
+    font-size: 20px;
     margin-left: 20px;
     font-weight: bold;
-    
-}
-.nome-opcao h3{
     color: black;
-    font-size: 20px;  
- 
-        max-width: 329px;
-        margin-left: -20px;
-        word-break: break-word;
-   
-    
 }
 .final{
     background-color: #ffffff;
@@ -475,17 +452,17 @@ li.bloco > .pergunta-fechada h2{
     font-size: 19px;
     font-weight: bold;
     max-width: 328px;
-    word-break: break-word;
+    word-wrap: break-word;
  
 } 
-
-
 .selecionado { 
     border: 3px solid red;
-}
-.clicado{
-    border: 3px solid green;
+} 
 
+.imagem-quizz > img {
+    width: 100%;
+    height: 100%; 
+    object-fit: cover;
 }
 .esbranquicado{
 background-color: white;
@@ -494,32 +471,26 @@ opacity: 0.6;
 .escondido{display: none;} 
 
 
-@media(max-width:1100px){
+@media(max-width:375px){
 
 /* tela1*/
-.tela1{
-    width: 100%;
-    
-}
-.naoCriou{
-    width: 80%;
-    margin-top: 0;
-}
 
+.naoCriou{
+    width: 90%;
+}
+.quizzes {
+   margin-left: 0px;
+}
 .informacao{
     justify-content: space-between;
     margin-left: 0px;
-    margin-top: 0px;
     width: 100%;
-    padding-left: 30px;
-    padding-top: 35px;
-    padding-bottom: 14px;
-    
+    padding: 20px;
 }
-.quizzes {
-    margin-left: 0px;
-    justify-content: center;
- }
+
+.quizz h2{
+    max-width: 340px;
+}
 
 /* tela2*/
     .parteDeCima{
@@ -544,7 +515,7 @@ opacity: 0.6;
     }
     .titulo-final h3, .titulo-pergunta h3{
         font-size: 19px;
-        word-break: break-word;
+        word-wrap: break-word;
 
 
     }
@@ -568,7 +539,11 @@ opacity: 0.6;
         width: 164px;
         height: 113px;
     }
-  
+    .nome-opcao{
+        font-size: 18px;
+        margin-left: 5px;
+        margin-top: 6px;
+    }
     .parteBaixa{
         flex-direction: column;
 
@@ -607,7 +582,7 @@ opacity: 0.6;
     }
     .texto h3{
         font-size: 18px;
-        word-break: break-word;
+        word-wrap: break-word;
     }
       /* tela3-parte 3*/
       li.bloco > .pergunta-fechada{
@@ -624,7 +599,7 @@ opacity: 0.6;
     }
     .imagem-quizz h2{
         font-size: 19px;
-        word-break: break-word;
+        word-wrap: break-word;
     }
     .voltar h2 {
         font-size: 18px;
