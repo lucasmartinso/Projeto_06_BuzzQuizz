@@ -69,38 +69,57 @@ function selecionarQuizz(elemento){
                          
                             `                                   
         }
- function pegarRespostas(elemento) {
-                    
-                     let block =document.querySelector(".blocao")
-                     
+        function pegarRespostas(elemento) {                 
+                    let block =document.querySelector(".blocao")
+                    let respostas = document.querySelector(".respostas")
                      for(let i=0; i<elemento.questions.length;i++){  
-                        block.innerHTML+=` 
+                        block.innerHTML+=`   
                         <div class="block">
-                            <div class="titulo-pergunta">          
-                                <h3>${elemento.questions[i].title}<h3>            
-                            </div>
-                            <div class="respostas"> 
-                        
-                            </div>                           
-                       </div>    
-                            `                    
-                    let respostas=document.querySelector(".respostas")
-                    for(let j= 0 ; j<elemento.questions[i].answers.length;j++){
-                        respostas.innerHTML+=`  
-                        <div class="opcao">
-                        <img src="${elemento.questions[i].answers[j].image}" />
-                        <div class="nome-opcao">${elemento.questions[i].answers[j].text}
-                        </div>     
-                    `                                                    
-                    } 
-                  
-                    console.log(block)  
+                                <div class="titulo-pergunta">          
+                                    <h3>${elemento.questions[i].title}<h3>            
+                                </div>
+                                <div class="respostas"> 
+                                </div>    
+                        </div> 
+                              `          
+                        for(let j=0 ;j< elemento.questions[i].answers.length; j++){
+                            respostas.innerHTML+=`
+                            <div class="opcao"  onclick="clicar(this)">
+                                    <img src="${elemento.questions[i].answers[j].image}" />
+                                    <div class="nome-opcao" ><h3>${elemento.questions[i].answers[j].text}</h3>
+                                    </div>  
+                             </div>  
+                            `                   
+                        }
                 }
+                mostrarResultado()
                
-                }               
+                }    
+       
               
+function mostrarResultado(){
+    //se todas as questoes foram marcadas
+    document.querySelector(".final").classList.remove("escondido")
+    document.querySelector(".botoes").classList.remove("escondido")
+}
+function clicar(elemento){
+    const clicado = document.querySelector(".clicado")
+    if(clicado != null){
+        clicado.classList.toggle("clicado")
+    }
+    elemento.classList.add("clicado")
+    
+    //fazer a mesma logica do abrir perguntas
+} 
 
-                
+
+
+
+
+
+
+
+
 function selecionarErro(){
     console.log("deu ruim")
 }
