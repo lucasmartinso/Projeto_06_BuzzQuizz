@@ -87,20 +87,19 @@ body {
 
 }
 .quizz{
-    background-color: black;
+background-color: black;
 position: relative;
 width: 340px;
 height: 181px;
 margin: 12px 15px;
-
-
+border-radius: 5px;
 }
 
 .quizz > img{
     width: 340px;
     height: 181px;
     border-radius: 5px;
-    -webkit-mask-image: linear-gradient(to top, transparent 0%, black 40%);
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, black 60%);
 }
 .quizz h2{
     position: absolute;
@@ -126,8 +125,6 @@ margin: 12px 15px;
     color: #FFFFFF;
     border-radius: 500px;
 }
-
------------------------------------------------------------
 
 
 .corpoTela3{
@@ -490,7 +487,7 @@ li.bloco > .pergunta-fechada h2{
     border: 3px solid green;
 
 }
-.naoClicado{
+.esbranquicado{
 background-color: white;
 opacity: 0.6;
 }
@@ -564,9 +561,10 @@ opacity: 0.6;
         width: 164px;
         height: 113px;
         margin: 6px;
-        margin-top: 13px;
+        margin-top: 20px;
     }
     .opcao >img{
+        border-radius: 5px;
         width: 164px;
         height: 113px;
     }

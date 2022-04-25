@@ -3,6 +3,7 @@ let quiz=[]
 let questions =[]
 let answers=[]
 
+
 //Funcoes da tela 1
 function criaQuizz() {  
     alert("Vamos criar um quizz");
@@ -25,7 +26,7 @@ function carregarQuizz(){
           
                 for(let i=0;i<6;i++){
                     lista.innerHTML+=
-                    `<div id="${response.data[i].id}" class="quizz" onclick="selecionarQuizz(this)">
+                    `<div id="${response.data[i].id}" class="quizz" data-identifier="quizz-card" onclick="selecionarQuizz(this)">
                     <img src="${response.data[i].image}" >
                     <h2>${response.data[i].title}</h2>
                     </div>`              
@@ -37,6 +38,7 @@ function carregarQuizz(){
             return Math.random() - 0.5;
         }         
 
+//FUNCOES PARA CLICAR E INICIAR UM QUIZZ ESPECIFICO
 function selecionarQuizz(elemento){
   console.log(elemento)
   let id =elemento.id
@@ -49,52 +51,60 @@ function selecionarQuizz(elemento){
 } 
 
         function selecionarSucesso(response){   
-            
-            let elemento= response.data  
            
-            renderizarCima (elemento)   
+            let elemento= response.data  
+            renderizarCima (elemento) 
+          
             document.querySelector(".tela1").classList.add("escondido")
             document.querySelector(".tela2").classList.remove("escondido")
 
         }
          function renderizarCima(elemento){ 
-                    pegarRespostas(elemento)
+            pegarPerguntas(elemento) 
                     let selecionado =document.querySelector(".parteDeCima")
-                    selecionado.innerHTML="";               
                     selecionado.innerHTML+=`            
-                             
                                     <img src="${elemento.image}">
-                                    <h2>${elemento.title}</h2>               
-                                                   
-                         
-                            `                                   
+                                    <h2>${elemento.title}</h2>                 `                                   
         }
-        function pegarRespostas(elemento) {                 
-                    let block =document.querySelector(".blocao")
-                    let respostas = document.querySelector(".respostas")
-                     for(let i=0; i<elemento.questions.length;i++){  
-                        block.innerHTML+=`   
-                        <div class="block">
-                                <div class="titulo-pergunta">          
-                                    <h3>${elemento.questions[i].title}<h3>            
-                                </div>
-                                <div class="respostas"> 
-                                </div>    
-                        </div> 
-                              `          
-                        for(let j=0 ;j< elemento.questions[i].answers.length; j++){
-                            respostas.innerHTML+=`
-                            <div class="opcao"  onclick="clicar(this)">
-                                    <img src="${elemento.questions[i].answers[j].image}" />
-                                    <div class="nome-opcao" ><h3>${elemento.questions[i].answers[j].text}</h3>
-                                    </div>  
-                             </div>  
-                            `                   
-                        }
+        function pegarPerguntas(elemento) {      
+          
+             for(let i=0; i<elemento.questions.length;i++){                  
+                let block =document.querySelector(".blocao")  
+                console.log(block)
+                block.innerHTML+=`   
+                <div class="block ">
+                        <div class="titulo-pergunta">          
+                            <h3>${elemento.questions[i].title}<h3>            
+                        </div>                    
+                        <div class="respostas"> 
+                        </div>  </div> 
+                        
+                      `      
+                        
+                                      } 
+    pegarOpcao(elemento)    
+           
+        }    
+        function pegarOpcao(elemento){
+            console.log(elemento)           
+            let respostas = document.querySelectorAll(".respostas")
+            console.log(respostas)
+            for(let i=0 ; i<respostas.length;i++){
+                for(let j=0 ; j<elemento.questions[i].answers.length ; j++){
+                   console.log(elemento.questions[i].answers.length )
+                  respostas[i].innerHTML+=` 
+                   <div class="opcao resposta${i}"   onclick="clicar(this)">
+                  <img src="${elemento.questions[i].answers[j].image}" />
+                  <div class="nome-opcao" ><h3>${elemento.questions[i].answers[j].text}</h3>
+                  </div>  
+           </div> `
                 }
-                mostrarResultado()
                
-                }    
+            }
+          
+           }
+             
+ //--------------------------------------------------------------//               
        
               
 function mostrarResultado(){
@@ -102,20 +112,28 @@ function mostrarResultado(){
     document.querySelector(".final").classList.remove("escondido")
     document.querySelector(".botoes").classList.remove("escondido")
 }
+/*FUNCAO CLICAR:
+-Ao clicar num elemento todos os outros devem adquirir a classe esbranquicado
+-So pode haver 1 item clicado 
+
+*/
 function clicar(elemento){
-    const clicado = document.querySelector(".clicado")
-    if(clicado != null){
-        clicado.classList.toggle("clicado")
-    }
-    elemento.classList.add("clicado")
+  
+  
+            const clicado = document.querySelector(".opcao.clicado") 
+            if(clicado != null){
+                clicado.classList.remove("clicado")     
+            
+            }
+            elemento.classList.add("clicado")
+        
+           
+ 
     
+   
+  
     //fazer a mesma logica do abrir perguntas
 } 
-
-
-
-
-
 
 
 

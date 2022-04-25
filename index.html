@@ -17,12 +17,12 @@
    <div class="tela1  " >
        <div class="naoCriou ">
            <h1>Voce nao criou nenhum quizz ainda :(</h1>
-           <div onclick="criaQuizz()" class="criarQuizz">Criar Quizz</div>
+           <div onclick="criaQuizz()"data-identifier="create-quizz" class="criarQuizz">Criar Quizz</div>
        </div>
-       <div class="criou escondido">
+       <div class="criou escondido" data-identifier="user-quizzes">
             <div class="informacao">
                 <h1>Seus quizzes</h1>
-                <div onclick="criaQuizz()" class="mais">+</div>
+                <div onclick="criaQuizz()" data-identifier="create-quizz" class="mais">+</div>
             </div>
 
             <div class="quizzes ">
@@ -33,7 +33,7 @@
             </div>
        </div>
        <div class="informacao"><h1>Todos os quizzes</h1></div>
-       <div class="quizzes prontos">
+       <div class="quizzes prontos" data-identifier="general-quizzes">
            
        </div>
 
@@ -47,7 +47,7 @@
         </div> 
         <div class="parteDeBaixo">
             <div class="blocao">
-                
+                 
            </div>
         </div>
      <div class="final escondido">
@@ -85,10 +85,7 @@
                
 
                 <button onclick="criarPerguntas()" class="criar">Prosseguir pra criar perguntas</button>
-            </div>
-
-
-           
+            </div>        
             <div class="tela3-parte2 escondido">
                 <div class="criacao"> <h1>Crie suas perguntas</h1></div>  
                 <ul class="perguntitas">
