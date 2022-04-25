@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap'); 
-
 body { 
     width: 100%; 
     height: 100%; 
@@ -7,11 +6,9 @@ body {
     background-color: #E5E5E5;
   
 } 
-
 * { 
     box-sizing: border-box;
 } 
-
 .cabecalho { 
     width: 100%; 
     height: 69px;  
@@ -25,8 +22,6 @@ body {
     align-items: center; 
     margin-bottom: 31px;
 } 
-
-
 .naoCriou{
     margin: 0 auto;
     display: flex;
@@ -37,7 +32,6 @@ body {
     height: 181px;
     border: 2px dashed #D5D5D5;
     border-radius: 5px;
-
     margin-top: 77px;
 }
 .naoCriou h1{
@@ -45,7 +39,7 @@ body {
     text-align: center;
     color: #b9B9B9;
     font-size: 20px;
-    word-wrap: break-word;
+    word-break: break-word;
 }
 .criarQuizz:hover{
     cursor: pointer;
@@ -69,14 +63,12 @@ body {
     margin-top: 77px;
     margin-left: 124px;
 }
-
-
 .informacao h1{
    
     font-size: 20px;
     color: #000000;
     font-weight: bold;
-    word-wrap: break-word;
+    word-break: break-word;
   
 }
 .quizzes{
@@ -87,11 +79,14 @@ body {
 
 }
 .quizz{
+  
 background-color: black;
 position: relative;
 width: 340px;
 height: 181px;
 margin: 12px 15px;
+
+
 border-radius: 5px;
 }
 
@@ -99,6 +94,7 @@ border-radius: 5px;
     width: 340px;
     height: 181px;
     border-radius: 5px;
+   
     -webkit-mask-image: linear-gradient(to top, transparent 0%, black 60%);
 }
 .quizz h2{
@@ -107,9 +103,8 @@ border-radius: 5px;
     left: 10px;
     color: #ffffff;
     font-size: 19px;
-    word-wrap: break-word;
+    word-break: break-word;
 }
-
 .mais:hover{
     cursor: pointer;
 }
@@ -126,6 +121,8 @@ border-radius: 5px;
     border-radius: 500px;
 }
 
+-----------------------------------------------------------
+
 
 .corpoTela3{
     display: flex;
@@ -134,16 +131,13 @@ border-radius: 5px;
     align-items: center; 
     width: 100%; 
     height: 100%;
-
 }
 .tela2{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
 } 
-
 .tela3-parte1 ,.tela3-parte2 ,.tela3-parte3 ,.tela3-parte4{ 
     display: flex;
     flex-direction: column;
@@ -152,7 +146,6 @@ border-radius: 5px;
     width: 100%; 
     height: 100%;
 } 
-
 .criacao{
     display: flex;
     align-items: center;
@@ -166,11 +159,9 @@ border-radius: 5px;
     font-size: 23px;
     color:black;
     font-weight: bold;
-    word-wrap: break-word;
-
+    word-break: break-word;
 }
 .infos{
-
     width: 600px;
     height: 256px;
     background-color: #ffffff;
@@ -196,7 +187,6 @@ border-radius: 5px;
     margin-bottom: 24px;
 }
 button{
-
     background-color:#EC362D;
     width: 369px;
     height: 54px;
@@ -220,7 +210,7 @@ li.bloco > .formacao{
     margin-left: 17px;
     margin-top: 27px;
     margin-bottom: 15px;
-    word-wrap: break-word;
+    word-break: break-word;
 }
 .pergunta > input{
     margin-left: 16px;
@@ -236,18 +226,17 @@ li.bloco > .formacao{
 .bloco{
     background-color: #ffffff;
 }
-
 .conjunto{
     height: 32px;
     width: 100px;
 }
 .niveis{ 
-    padding-top: 5px;
+    padding-top: 27px;
     width: 600px;
     height: 316px;
     background-color: #ffffff;
     margin: 0 auto;
-} 
+}
 .niveis > input{
    
         margin-left: 16px;
@@ -267,7 +256,7 @@ li.bloco > .formacao{
     margin-left: 17px;
     margin-top: 27px;
     margin-bottom: 15px;
-    word-wrap: break-word;
+    word-break: break-word;
 }
 .imagem-quizz{
     width: 500px;
@@ -282,18 +271,24 @@ li.bloco > .formacao{
     left: 23px;
     font-size: 23px;
     color: #FFFFFF;
-    word-wrap: break-word;
+    word-break: break-word;
 }
 .acessar{
     width: 220px;
     height: 44px;
+}
+.botoes{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .voltar h2{
     margin-top: 19px;
     color: #818181;
     font-size: 21px;
     margin-bottom: 30px;
-    word-wrap: break-word;
+    word-break: break-word;
 }
 .voltar :hover{
     cursor: pointer;
@@ -311,18 +306,16 @@ li.bloco > .pergunta-fechada , .nivel-fechado  {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
     padding: 20px;
 }
-
 li.bloco > .pergunta-fechada h2{
     font-size: 20px;
     font-weight: bold;
     margin-left: 17px;
-
 }
 .nivel-fechado h2{
     font-size: 20px;
     font-weight: bold;
     margin-left: 17px;
-    word-wrap: break-word;
+    word-break: break-word;
 }
 .icone{
     width: 26px;
@@ -348,12 +341,11 @@ li.bloco > .pergunta-fechada h2{
     margin-top: -31px;
     background-color: #000000;
 }
-
 .parteDeCima h2{
     position: absolute;
     font-size: 39px;
     color: white;
-    word-wrap: break-word;
+    word-break: break-word;
 }
 .parteDeBaixo{
     display: flex;
@@ -367,9 +359,9 @@ li.bloco > .pergunta-fechada h2{
     width: 759px;
     height: 676px;
     margin-top: 42px;
+    padding: 1px
    
 }
-
 .titulo-pergunta , .titulo-final{
     display: flex;
     align-items: center;
@@ -384,14 +376,15 @@ li.bloco > .pergunta-fechada h2{
     font-size: 23px;
    color: white;
     font-weight: bold;
-    word-wrap: break-word;
+    max-width: 668px;
+    word-break: break-word;
  
 }
 .titulo-final h3{
     font-size: 23px;
     color: white;
     font-weight: bold;
-    word-wrap: break-word;
+    word-break: break-word;
 }
 .respostas{
    display: flex;
@@ -399,7 +392,6 @@ li.bloco > .pergunta-fechada h2{
    justify-content: center;
    align-items: center;
 }
-
 .opcao{
     margin: 20px;
     width: 329px;
@@ -410,26 +402,36 @@ li.bloco > .pergunta-fechada h2{
   
     width: 329px;
     height: 175px; 
-
+}
+.opcao:hover{
+    cursor: pointer;
 }
 .nome-opcao{
-    font-size: 20px;
+   
     margin-left: 20px;
     font-weight: bold;
+    
+}
+.nome-opcao h3{
     color: black;
+    font-size: 20px;  
+ 
+        max-width: 329px;
+        margin-left: -20px;
+        word-break: break-word;
+   
+    
 }
 .final{
     background-color: #ffffff;
     margin-top: 44px;
     width: 759px;
     height: 500px;
-
 }
 .parteBaixa{
  display: flex;
  justify-content: center;
  align-items: center;
-
 }
 .texto{
     display: flex;
@@ -452,159 +454,154 @@ li.bloco > .pergunta-fechada h2{
     font-size: 19px;
     font-weight: bold;
     max-width: 328px;
-    word-wrap: break-word;
+    word-break: break-word;
  
 } 
 .selecionado { 
     border: 3px solid red;
-} 
-
-.imagem-quizz > img {
-    width: 100%;
-    height: 100%; 
-    object-fit: cover;
 }
+.clicado{
+    border: 3px solid green;
+
+}
+
 .esbranquicado{
 background-color: white;
 opacity: 0.6;
 }
-.escondido{display: none;} 
+.escondido{display: none;}
 
+@media(max-width:1100px){
 
-@media(max-width:375px){
-
-/* tela1*/
-
-.naoCriou{
-    width: 90%;
-}
-.quizzes {
-   margin-left: 0px;
-}
-.informacao{
-    justify-content: space-between;
-    margin-left: 0px;
-    width: 100%;
-    padding: 20px;
-}
-
-.quizz h2{
-    max-width: 340px;
-}
-
-/* tela2*/
-    .parteDeCima{
-    height: 142px;
-    width: 100%;
-    }
-    .parteDeCima h2{
-        font-size: 19px;
-    }
-
-    .block {
-        width: 375px;
-        height: 436px;
-    }
-    .final{
+    * tela1*/
+    .tela1{
         width: 100%;
-        height: 500px;
-    }
-    .titulo-final , .titulo-pergunta{
-    width: 95%;
-    margin-left: 8px;
-    }
-    .titulo-final h3, .titulo-pergunta h3{
-        font-size: 19px;
-        word-wrap: break-word;
-
-
-    }
-    .titulo-final{
-        height: 99px;
-        margin-top: 18px;
-
-    }
-    .titulo-pergunta{
-        height: 89px;
-        margin-top: 18px;
-    }
-    .opcao {
-        width: 164px;
-        height: 113px;
-        margin: 6px;
-        margin-top: 20px;
-    }
-    .opcao >img{
-        border-radius: 5px;
-        width: 164px;
-        height: 113px;
-    }
-    .nome-opcao{
-        font-size: 18px;
-        margin-left: 5px;
-        margin-top: 6px;
-    }
-    .parteBaixa{
-        flex-direction: column;
-
-    }
-    .imagem{
-        width: 340px;
-        height: 255px;
-        margin-top: 9px;
-    }
-
-    /* tela3-parte 1*/
-    .infos{
-        width: 100%;
-    }
-    .infos > input{
-     width: 90%;
-     
-    }
-    button {
         
-        margin-top: 34px;
-        font-size: 18px;
     }
-    .reiniciar{
-        width: 220px;
-        height: 44px;
+    .naoCriou{
+        width: 80%;
+        margin-top: 0;
     }
-    .criar{
-        width: 323px;
+    .informacao{
+        justify-content: space-between;
+        margin-left: 0px;
+        margin-top: 0px;
+        width: 100%;
+        padding-left: 30px;
+        padding-top: 35px;
+        padding-bottom: 14px;
+        
     }
-    .criacao{
-        margin-top: -2px;
-    }
-    .voltar{
-        font-size: 18px;
-    }
-    .texto h3{
-        font-size: 18px;
-        word-wrap: break-word;
-    }
-      /* tela3-parte 3*/
-      li.bloco > .pergunta-fechada{
-          width:375px;
-        }
-     /* tela3-parte 3*/
-     .niveis{
-         width: 100%;
+    .quizzes {
+        margin-left: 0px;
+        justify-content: center;
      }
-    /*tela3-parte 4:*/
-    .imagem-quizz{
-        width: 340px;
-        height: 181px;
-    }
-    .imagem-quizz h2{
-        font-size: 19px;
-        word-wrap: break-word;
-    }
-    .voltar h2 {
-        font-size: 18px;
-    }
-
+    /* tela2*/
+        .parteDeCima{
+        height: 142px;
+        width: 100%;
+        }
+        .parteDeCima h2{
+            font-size: 19px;
+        }
+        .block {
+            width: 375px;
+            height: 436px;
+        }
+        .final{
+            width: 100%;
+            height: 500px;
+        }
+        .titulo-final , .titulo-pergunta{
+        width: 95%;
+        margin-left: 8px;
+        }
+        .titulo-final h3, .titulo-pergunta h3{
+            font-size: 19px;
+            word-break: break-word;
+        }
+        .titulo-final{
+            height: 99px;
+            margin-top: 18px;
+        }
+        .titulo-pergunta{
+            height: 89px;
+            margin-top: 18px;
+        }
+        .opcao {
+            width: 164px;
+            height: 113px;
+            margin: 6px;
+         
+            margin-top: 20px;
+        }
+        .opcao >img{
+            border-radius: 5px;
+            width: 164px;
+            height: 113px;
+        }
+      
+        .parteBaixa{
+            flex-direction: column;
+        }
+        .imagem{
+            width: 340px;
+            height: 255px;
+            margin-top: 9px;
+        }
+        /* tela3-parte 1*/
+        .infos{
+            width: 100%;
+        }
+        .infos > input{
+         width: 90%;
+         
+        }
+        button {
+            
+            margin-top: 34px;
+            font-size: 18px;
+        }
+        .reiniciar{
+            width: 220px;
+            height: 44px;
+        }
+        .criar{
+            width: 323px;
+        }
+        .criacao{
+            margin-top: -2px;
+        }
+        .voltar{
+            font-size: 18px;
+        }
+        .texto h3{
+            font-size: 18px;
+            word-break: break-word;
+        }
+          /* tela3-parte 3*/
+          li.bloco > .pergunta-fechada{
+              width:375px;
+            }
+         /* tela3-parte 3*/
+         .niveis{
+             width: 100%;
+         }
+        /*tela3-parte 4:*/
+        .imagem-quizz{
+            width: 340px;
+            height: 181px;
+        }
+        .imagem-quizz h2{
+            font-size: 19px;
+            word-break: break-word;
+        }
+        .voltar h2 {
+            font-size: 18px;
+        }
+      
+         
+    
   
      
 
