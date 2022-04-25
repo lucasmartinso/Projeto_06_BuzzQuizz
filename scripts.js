@@ -1,7 +1,9 @@
 
 let quiz=[]
 let questions =[]
-let answers=[]
+let answers=[] 
+
+let novoQuizz = [];
 
 //Funcoes da tela 1
 function criaQuizz() {  
@@ -10,7 +12,8 @@ function criaQuizz() {
     document.querySelector(".corpoTela3").classList.remove("escondido");
     document.querySelector(".tela3-parte1").classList.remove("escondido");
     //Mandar pra tela 3
-}
+} 
+
 function carregarQuizz(){
    let promise = axios.get('https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes')
   
@@ -150,7 +153,12 @@ function criarPerguntas(){
     let numPerguntas = Number(document.querySelector("input.numPerguntas").value); 
     let numNiveis= Number(document.querySelector("input.numNiveis").value); 
     let url = document.querySelector("input.url").value; 
-    let https= "";
+    let https= ""; 
+
+    let capaQuizz = { 
+        title: titulo,
+        image: url
+    };
 
     for(let i=0; i<8; i++) { 
         https += url[i];
@@ -209,7 +217,6 @@ function gerarPerguntas() {
 } 
 
 function abrirPerguntas(elemento){ 
-    console.log(elemento); 
     const itemSelecionado = document.querySelector(".selecionado"); 
 
     if(itemSelecionado !== null) {  
@@ -308,16 +315,17 @@ function gerarNiveis(){
 }  
 
 function edicaoNiveis(elemento) {  
-    console.log(elemento); 
     const itemSelecionado = document.querySelector(".selecionado"); 
 
     if(itemSelecionado !== null) {  
         itemSelecionado.classList.remove("selecionado"); 
-        itemSelecionado.querySelector(".niveis").classList.add("escondido"); 
+        itemSelecionado.querySelector(".niveis").classList.add("escondido");  
+        itemSelecionado.querySelector(".nivel-fechado").classList.remove("escondido"); 
     }
     
     elemento.classList.add("selecionado");  
-    elemento.querySelector(".niveis").classList.remove("escondido");   
+    elemento.querySelector(".niveis").classList.remove("escondido"); 
+    elemento.querySelector(".nivel-fechado").classList.add("escondido");  
 }
 
 function finalizarQuizz(){  
@@ -334,12 +342,25 @@ function finalizarQuizz(){
     
     if(titulo.length>=10 && (porcentagem>=0 && porcentagem<=100) && https==="https://" && descricao.length>=30) {
         document.querySelector(".tela3-parte3").classList.add("escondido")
-        document.querySelector(".tela3-parte4").classList.remove("escondido")
+        document.querySelector(".tela3-parte4").classList.remove("escondido") 
         alert("finalizando quizz") 
+        renderizaSucessoQuizz();
     } else { 
         alert("PREENCHA NOVAMENTE!!!\n\nTitulo tem que ter pelo menos 10 caracteres\nPorcentagem tem que ser de 0% a 100%\nImagem em formato url\nDescricao com pelo menos 30 caracteres");
     }
 } 
+
+
+function renderizaSucessoQuizz() { 
+    let titulo = document.querySelector("input.title").value;   
+    let url = document.querySelector("input.url").value;   
+    console.log(url); 
+    console.log(titulo);
+    document.querySelector(".imagem-quizz").innerHTML = `
+        <img src="${url}"/> 
+        <h2>${titulo}</h2>
+        `; 
+}
 
 function acessarQuizz(){
     document.querySelector(".tela3-parte4").classList.add("escondido")
