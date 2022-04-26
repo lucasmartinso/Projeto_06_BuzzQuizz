@@ -417,10 +417,10 @@ function voltarHome(){
 
     let titulo = document.querySelector("input.title").value;   
     let url = document.querySelector("input.url").value;
-    const lista = document.querySelector(".criou > .quizzes").innerHTML=""; 
+    const lista = document.querySelector(".criou > .quizzes"); 
     lista.innerHTML = `
-        <img src="${url}"/> 
+        <img src="${url}" onclick="selecionarQuizz(this)"/> 
         <h2>${titulo}</h2>
-        `
+        `;
 }
     //mandar pra tela 1
