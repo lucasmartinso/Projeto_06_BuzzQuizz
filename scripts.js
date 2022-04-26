@@ -189,7 +189,7 @@ function criarPerguntas(){
         https += url[i];
     } 
 
-   if(titulo.length>=20 && titulo.length<=65 && numPerguntas>=1 && numNiveis>=1 && https === "https://") { 
+   if(titulo.length>=20 && titulo.length<=65 && numPerguntas>=3 && numNiveis>=2 && https === "https://") { 
     document.querySelector(".tela3-parte1").classList.add("escondido");
     document.querySelector(".tela3-parte2").classList.remove("escondido"); 
     alert("Agora criar perguntas"); 
@@ -424,14 +424,63 @@ function voltarHome(){
 } 
 
 function postaQuizz() {   
-    let numPerguntas = Number(document.querySelector("input.numPerguntas").value);
+    let numPerguntas = Number(document.querySelector("input.numPerguntas").value); 
+    let numNiveis= Number(document.querySelector("input.numNiveis").value);
+    let textoPergunta = document.querySelectorAll(".pergunta > input.textoPergunta");
+    let corFundo = document.querySelectorAll(".pergunta > input.corFundo");
+    let textoResposta1 = document.querySelectorAll(".pergunta > input.respostaCorreta"); 
+    let textoResposta2 = document.querySelectorAll(".pergunta > input.respostaIncorreta1"); 
+    let textoResposta3 = document.querySelectorAll(".pergunta > input.respostaIncorreta2");
+    let textoResposta4 = document.querySelectorAll(".pergunta > input.respostaIncorreta3"); 
+    let url1 = document.querySelectorAll(".pergunta > input.urlImg1");  
+    let url2 = document.querySelectorAll(".pergunta > input.urlImg2");   
+    let url3 = document.querySelectorAll(".pergunta > input.urlImg3");   
+    let url4 = document.querySelectorAll(".pergunta > input.urlImg4"); 
+    let titulo = document.querySelectorAll(".niveis > input.tituloNivel");  
+    let porcentagem = document.querySelectorAll(".niveis > input.porcentagem"); 
+    let url = document.querySelectorAll(".niveis > input.urlNivel") ;
+    let descricao = document.querySelectorAll(".niveis > input.descricao") ; 
     let questoes = [];  
-    let niveis = []
+    let niveis = [];
 
     for(let i=0; i<numPerguntas; i++) { 
         questoes[i] = { 
-            
+            title: textoPergunta[i].value,
+			color: corFundo[i].value,
+			answers: [
+				{
+					text: textoResposta1[i].value,
+					image: url1[i].value,
+					isCorrectAnswer: true
+				},
+				{
+					text: textoResposta2[i].value,
+					image: url2[i].value,
+					isCorrectAnswer: false
+				},
+                {
+					text: textoResposta3[i].value,
+					image: url3[i].value,
+					isCorrectAnswer: false
+				}, 
+                {
+					text: textoResposta4[i].value,
+					image: url4[i].value,
+					isCorrectAnswer: false
+				}
+			]
+			}
         } 
+
+    for( let i=0; i<numNiveis; i++) { 
+        niveis[i] = [
+			{
+				title: titulo,
+				image: url,
+				text: porcentagem,
+				minValue: descricao
+			}
+		]
     }
 
     armazenaQuizz = { 
@@ -441,6 +490,12 @@ function postaQuizz() {
         levels : niveis
     }; 
 
-    let promise = axios.post("",armazenaQuizz);
+    let promise = axios.post("https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes",armazenaQuizz); 
+
+    promise.then(deuBom);
+} 
+
+function deuBom() { 
+    console.log("OIIIIIIIIIIIIIIII");
 }
     //mandar pra tela 1
