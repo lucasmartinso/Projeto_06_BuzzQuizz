@@ -252,41 +252,54 @@ function criarNiveis(){
     let url3 = document.querySelectorAll(".pergunta > input.urlImg3");   
     let url4 = document.querySelectorAll(".pergunta > input.urlImg4");      
 
-    console.log(url1);
-    
-
     let https1= []; 
     let https2= []; 
     let https3= []; 
-    let https4= [];  
+    let https4= [];   
 
     for(let i=0; i<numPerguntas; i++) {    
         https1[i]= url1[i].value.substring(0,8);
     }   
 
     for(let i=0; i<numPerguntas; i++) { 
-        https2[i] += url2[i].value.substring(0,8);
+        https2[i] = url2[i].value.substring(0,8);
     }  
 
     for(let i=0; i<numPerguntas; i++) { 
-        https3[i] += url3[i].value.substring(0,8);
+        https3[i] = url3[i].value.substring(0,8);
     }  
 
     for(let i=0; i<numPerguntas; i++) { 
-        https4[i] += url4[i].value.substring(0,8);
-    }   
+        https4[i] = url4[i].value.substring(0,8);
+    }    
 
-    console.log(https1);
+    corHex= []; 
+    cor= []; 
+
+    for(let i=0; i<numPerguntas; i++) { 
+        cor[i]= corFundo[i].value.substring(0,7).toUpperCase(); 
+        for(let j=0; j<7 && (cor[i][j] === "A" || cor[i][j] === "B" || cor[i][j] === "C" || cor[i][j] === "D" || cor[i][j] === "E" || cor[i][j] === "F" || cor[i][0] === "#"); j++) { 
+            if(j<7) {
+                corHex[i] = cor[i][j];
+            } else {
+                break; 
+            }
+        }
+    } 
     
+    console.log(corHex[0]);
 
     for(let i=0; i<numPerguntas; i++) { 
-        if(textoPergunta[i].value.length>=20 && https1[i]=== "https://" && https2[i]=== "https://" && https3[i]=== "https://" && https4[i]=== "https://" && textoResposta1[i].value !== "" && textoResposta2[i].value !== "" && textoResposta3[i].value !== "" && textoResposta4[i].value !== "") {
-            document.querySelector(".tela3-parte2").classList.add("escondido");
-            document.querySelector(".tela3-parte3").classList.remove("escondido");
-            alert("Agora criar os niveis"); 
-            gerarNiveis();
+        if(textoPergunta[i].value.length>=20 && https1[i] === "https://" && https2[i] === "https://" && https3[i] === "https://" && https4[i] === "https://" && textoResposta1 !== "" && textoResposta2 !== "" && textoResposta3 !== "" && textoResposta4 !== "" && cor[i][0]=== "#" && corHex[i] !== undefined)  {
+            if(i === numPerguntas-1) {
+                document.querySelector(".tela3-parte2").classList.add("escondido");
+                document.querySelector(".tela3-parte3").classList.remove("escondido");
+                alert("Agora criar os niveis"); 
+                gerarNiveis(); 
+            }
         } else { 
-            alert("PREENCHA NOVAMENTE\n\nTexto da pergunta tem que ter no mínimo 20 caracteres\nCor de fundo modelo Hexadecimal\nTexto das respostas tem que estar preenchidos\nObrigatória ao menos uma resposta errada");
+            alert("PREENCHA NOVAMENTE\n\nTexto da pergunta tem que ter no mínimo 20 caracteres\nCor de fundo modelo Hexadecimal\nTexto das respostas tem que estar preenchidos\nObrigatória ao menos uma resposta errada"); 
+            break;
         } 
     }
 } 
@@ -328,28 +341,36 @@ function edicaoNiveis(elemento) {
     elemento.querySelector(".nivel-fechado").classList.add("escondido");  
 }
 
-function finalizarQuizz(){  
-    let titulo = document.querySelectorAll(".niveis > input.tituloNivel").value;  
-    let porcentagem = Number(document.querySelectorAll(".niveis > input.porcentagem").value); 
-    let url = document.querySelectorAll(".niveis > input.urlNivel").value ;
-    let descricao = document.querySelectorAll(".niveis > input.descricao").value ;  
+function finalizarQuizz(){   
+    let numNiveis= Number(document.querySelector("input.numNiveis").value);
+    let titulo = document.querySelectorAll(".niveis > input.tituloNivel");  
+    let porcentagem = document.querySelectorAll(".niveis > input.porcentagem"); 
+    let url = document.querySelectorAll(".niveis > input.urlNivel") ;
+    let descricao = document.querySelectorAll(".niveis > input.descricao") ;  
 
-    https = "";
+    https = [];
 
-    for(let i=0; i<8; i++) { 
-        https += url[i];
+    for(let i=0; i<numNiveis; i++) { 
+        https[i] = url[i].value.substring(0,8);
     }   
-    
-    if(titulo.length>=10 && (porcentagem>=0 && porcentagem<=100) && https==="https://" && descricao.length>=30) {
-        document.querySelector(".tela3-parte3").classList.add("escondido")
-        document.querySelector(".tela3-parte4").classList.remove("escondido") 
-        alert("finalizando quizz") 
-        renderizaSucessoQuizz();
-    } else { 
-        alert("PREENCHA NOVAMENTE!!!\n\nTitulo tem que ter pelo menos 10 caracteres\nPorcentagem tem que ser de 0% a 100%\nImagem em formato url\nDescricao com pelo menos 30 caracteres");
+
+    console.log(porcentagem[0].value); 
+    console.log(descricao[0].value.length);
+
+    for(let i=0; i<numNiveis; i++) {
+        if(titulo[i].value.length>=10 && (porcentagem[i].value>=0 && porcentagem[i].value<=100 && porcentagem[0].value==0) && https[i]==="https://" && descricao[i].value.length>=30) { 
+            if(i === numNiveis-1) {
+                document.querySelector(".tela3-parte3").classList.add("escondido")
+                document.querySelector(".tela3-parte4").classList.remove("escondido") 
+                alert("finalizando quizz") 
+                renderizaSucessoQuizz(); 
+            }
+        } else { 
+            alert("PREENCHA NOVAMENTE!!!\n\nTitulo tem que ter pelo menos 10 caracteres\nPorcentagem tem que ser de 0% a 100%\nImagem em formato url\nDescricao com pelo menos 30 caracteres\nPorcentagem do primeiro nivel tem que ser 0"); 
+            break;
+        } 
     }
 } 
-
 
 function renderizaSucessoQuizz() { 
     let titulo = document.querySelector("input.title").value;   
@@ -363,8 +384,9 @@ function renderizaSucessoQuizz() {
 }
 
 function acessarQuizz(){
-    document.querySelector(".tela3-parte4").classList.add("escondido")
-    document.querySelector(".tela2").classList.remove("escondido")
+    document.querySelector(".tela3-parte4").classList.add("escondido");
+    document.querySelector(".tela2").classList.remove("escondido"); 
+
     alert("acessando quizz")
     //mandar pra tela 2
 
@@ -374,6 +396,14 @@ function voltarHome(){
     document.querySelector(".tela2").classList.add("escondido");
     document.querySelector(".tela1").classList.remove("escondido");
     document.querySelector(".naoCriou").classList.add("escondido");
-    document.querySelector(".criou").classList.remove("escondido");  
+    document.querySelector(".criou").classList.remove("escondido");    
+
+    let titulo = document.querySelector("input.title").value;   
+    let url = document.querySelector("input.url").value;
+    const lista = document.querySelector(".criou > .quizzes").innerHTML=""; 
+    lista.innerHTML = `
+        <img src="${url}"/> 
+        <h2>${titulo}</h2>
+        `
 }
     //mandar pra tela 1
