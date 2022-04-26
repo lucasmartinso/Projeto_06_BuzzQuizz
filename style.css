@@ -468,7 +468,16 @@ li.bloco > .pergunta-fechada h2{
 .esbranquicado{
 background-color: white;
 opacity: 0.6;
-}
+} 
+
+.criou > .quizzes > img { 
+    width: 340px;
+    height: 181px;  
+    border-radius: 5px; 
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 65.62%, rgba(0, 0, 0, 0.8) 100%);
+    object-fit: cover;
+} 
+
 .escondido{display: none;}
 
 @media(max-width:1100px){
