@@ -1,10 +1,4 @@
-
-let quiz=[];
-let questions = [];
-let levels = [];
-let answers = [];
-const userQuizesID = []; 
-
+let url4 = []; 
 
 
 //Funcoes da tela 1
@@ -37,7 +31,7 @@ function carregarQuizz(){
                     </div>`              
         }  
         quiz.sort(comparador)
-    
+      
         }
         function comparador(){
             return Math.random() - 0.5;
@@ -50,11 +44,14 @@ function carregarQuizz(){
 function selecionarQuizz(elemento){
   console.log(elemento)
   let id =elemento.id
+  console.log(id)
   let promise= axios.get(`https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes/${id}`)
   promise.then(selecionarSucesso )
   promise.catch(selecionarErro)
-  
+    
+    
 } 
+
         function selecionarSucesso(response){   
            
             let elemento= response.data  
@@ -79,7 +76,7 @@ function selecionarQuizz(elemento){
           
              for(let i=0; i<elemento.questions.length;i++){                  
                 let block =document.querySelector(".blocao")  
-                
+                console.log(block)
                 block.innerHTML+=`   
                 <div class="block ">
                         <div class="titulo-pergunta">          
@@ -95,11 +92,12 @@ function selecionarQuizz(elemento){
            
         }    
         function pegarOpcao(elemento){
-                  
+            console.log(elemento)           
             let respostas = document.querySelectorAll(".respostas")
-           
+            console.log(respostas)
             for(let i=0 ; i<respostas.length;i++){
                 for(let j=0 ; j<elemento.questions[i].answers.length ; j++){
+                   console.log(elemento.questions[i].answers.length )
                   respostas[i].innerHTML+=` 
                    <div class="opcao resposta${i}"   onclick="clicar(this)">
                   <img src="${elemento.questions[i].answers[j].image}" />
@@ -123,6 +121,13 @@ function reiniciarQuizz(){
     elemento.scrollIntoView()
   
 } 
+       
+              
+function mostrarResultado(){
+    //se todas as questoes foram marcadas
+    document.querySelector(".final").classList.remove("escondido")
+    document.querySelector(".botoes").classList.remove("escondido")
+}
 /*FUNCAO CLICAR:
 -Ao clicar num elemento todos os outros devem adquirir a classe "esbranquicado"
 -So pode haver 1 item clicado 
@@ -247,48 +252,35 @@ function criarNiveis(){
     let url3 = document.querySelectorAll(".pergunta > input.urlImg3");   
     let url4 = document.querySelectorAll(".pergunta > input.urlImg4");      
 
-    for(let i=0; i<numPerguntas; i++) { 
-        url4[i]= url4[i].value;
-    }  
-
+    console.log(url1);
     
 
     let https1= []; 
-    let https2= ""; 
-    let https3= ""; 
-    let https4= ""; 
+    let https2= []; 
+    let https3= []; 
+    let https4= [];  
 
-    for(let j=0; j<numPerguntas; j++) {  
-        for(let i=0; i<8; i++) { 
-            https1[j] += url1[j].value[i];
-        }   
-    } 
-    
-    for(let j=0; j<numPerguntas; j++) {
-        for(let i=0; i<8; i++) { 
-            https2 += url2[j].value[i];
-        }  
-    } 
-
-    for(let j=0; j<numPerguntas; j++) {
-        for(let i=0; i<8; i++) { 
-            https3 += url3[j].value[i];
-        }  
-    } 
-
-    for(let j=0; j<numPerguntas; j++) {
-        for(let i=0; i<8; i++) { 
-            https4 += url4[j].value[i];
-        }   
-    } 
+    for(let i=0; i<numPerguntas; i++) {    
+        https1[i]= url1[i].value.substring(0,8);
+    }   
 
     for(let i=0; i<numPerguntas; i++) { 
-        console.log(https1[i]);
-    }
+        https2[i] += url2[i].value.substring(0,8);
+    }  
+
+    for(let i=0; i<numPerguntas; i++) { 
+        https3[i] += url3[i].value.substring(0,8);
+    }  
+
+    for(let i=0; i<numPerguntas; i++) { 
+        https4[i] += url4[i].value.substring(0,8);
+    }   
+
+    console.log(https1);
     
 
     for(let i=0; i<numPerguntas; i++) { 
-        if(textoPergunta[i].value.length>=20 && https1[i].value === "undefinedhttps://" && https2[i].value === "undefinedhttps://" && https3[i].value === "undefinedhttps://" && https4[i].value === "undefinedhttps://" && textoResposta1[i].value !== "" && textoResposta2[i].value !== "" && textoResposta3[i].value !== "" && textoResposta4[i].value !== "") {
+        if(textoPergunta[i].value.length>=20 && https1[i]=== "https://" && https2[i]=== "https://" && https3[i]=== "https://" && https4[i]=== "https://" && textoResposta1[i].value !== "" && textoResposta2[i].value !== "" && textoResposta3[i].value !== "" && textoResposta4[i].value !== "") {
             document.querySelector(".tela3-parte2").classList.add("escondido");
             document.querySelector(".tela3-parte3").classList.remove("escondido");
             alert("Agora criar os niveis"); 
@@ -379,7 +371,6 @@ function acessarQuizz(){
 }
 function voltarHome(){
     alert("voltando pra home")
-    location.reload()
     document.querySelector(".tela2").classList.add("escondido");
     document.querySelector(".tela1").classList.remove("escondido");
     document.querySelector(".naoCriou").classList.add("escondido");
