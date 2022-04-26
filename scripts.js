@@ -105,21 +105,25 @@ function selecionarQuizz(elemento){
                                     <h2>${elemento.title}</h2>                 `                                   
         }
         function pegarPerguntas(elemento) {      
-          
+           
              for(let i=0; i<elemento.questions.length;i++){                  
                 let block =document.querySelector(".blocao")  
-                console.log(block)
+                let cor= elemento.questions[i].color                            
+              
                 block.innerHTML+=`   
                 <div class="block ">
-                        <div class="titulo-pergunta">          
+                        <div id="titulo-pergunta" class="titulo-pergunta" >          
                             <h3>${elemento.questions[i].title}<h3>            
                         </div>                    
                         <div class="respostas"> 
                         </div>  </div> 
                         
                       `      
+                      document.getElementById("titulo-pergunta").style.backgroundColor=`${cor}`
                         
                                       } 
+
+               
     pegarOpcao(elemento)    
            
         }    
@@ -142,7 +146,7 @@ function selecionarQuizz(elemento){
           
            }
              
-          
+         
 
 //Funcoes da tela 2
 
@@ -150,12 +154,15 @@ function selecionarQuizz(elemento){
  function clicar(elemento){      
 
     elemento.classList.add("clicado"); 
-   
+    let block =document.querySelectorAll(".blocao")  
     const itemSelecionado = document.querySelector(".clicado"); 
     const naoClicado = document.querySelectorAll(".opcao"); 
   
    
         for(let i=0; i<naoClicado.length; i++) {
+            for(let j=0; j<naoClicado.length; j++){
+
+            }
             naoClicado[i].classList.add("esbranquicado");  
             naoClicado[i].querySelector(".respostas > .opcao > .nome-opcao > h3").style.color="red";
         } 
