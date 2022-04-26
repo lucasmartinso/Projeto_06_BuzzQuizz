@@ -1,4 +1,6 @@
-let url4 = []; 
+let quiz=[]
+let questions=[]
+let answers=[]
 
 
 //Funcoes da tela 1
@@ -149,11 +151,7 @@ function clicar(elemento){
    
 //fazer a mesma logica do abrir perguntas
 } 
-function mostrarResultado(){
-//se todas as questoes foram marcadas
-document.querySelector(".final").classList.remove("escondido")
-document.querySelector(".botoes").classList.remove("escondido")
-}
+
 
  //--------------------------------------------------------------//   
 //Funcoes da tela 3
@@ -393,25 +391,29 @@ function acessarQuizz(){
 }
 function voltarHome(){
     alert("voltando pra home")
-    document.querySelector(".tela2").classList.add("escondido");
+    document.querySelector(".tela3-parte4").classList.add("escondido");
     document.querySelector(".tela1").classList.remove("escondido");
     document.querySelector(".naoCriou").classList.add("escondido");
     document.querySelector(".criou").classList.remove("escondido");    
 
     let titulo = document.querySelector("input.title").value;   
     let url = document.querySelector("input.url").value;
-    const lista = document.querySelector(".criou > .quizzes").innerHTML=""; 
-    lista.innerHTML = `
+    const lista = document.querySelector("quizzes.usuario").innerHTML=""; 
+    lista.innerHTML = `<div class="quizz">   
         <img src="${url}"/> 
         <h2>${titulo}</h2>
+        </div>
         `
+        console.log(lista)
 }
+
+
 /*----------------------------------------------------------------------------- */
 //Mandar o quizz pra API
-
+mandarQuiz()
 function mandarQuiz(){
     const quiz = {
-        title: document.querySelector(""),
+        title:document.querySelector("input.title").value ,
         image: "",
         questions: [],
         levels: []
