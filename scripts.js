@@ -1,4 +1,5 @@
-let url4 = []; 
+let url4 = [];  
+
 
 
 //Funcoes da tela 1
@@ -98,8 +99,8 @@ function selecionarQuizz(elemento){
            </div> `
                 }
                
-            }
-          
+            }  
+            
            }
              
  //--------------------------------------------------------------//               
@@ -114,22 +115,23 @@ function mostrarResultado(){
 -Ao clicar num elemento todos os outros devem adquirir a classe esbranquicado
 -So pode haver 1 item clicado 
 
-*/
-function clicar(elemento){
-  
-  
-            const clicado = document.querySelector(".opcao.clicado") 
-            if(clicado != null){
-                clicado.classList.remove("clicado")     
-            
-            }
-            elemento.classList.add("clicado")
-        
-           
- 
+*/ 
+
+function clicar(elemento){     
+
+    elemento.classList.add("clicado"); 
+    const itemSelecionado = document.querySelector(".clicado"); 
+    const naoClicado = document.querySelectorAll(".opcao");    
+    for(let i=0; i<naoClicado.length; i++) {
+        naoClicado[i].classList.add("esbranquicado");  
+        naoClicado[i].querySelector(".respostas > .opcao > .nome-opcao > h3").style.color="red";
+    } 
+
+    if(itemSelecionado !== null ) { 
+        itemSelecionado.classList.remove("clicado");
+    }
     
-   
-  
+    elemento.classList.remove("esbranquicado");
     //fazer a mesma logica do abrir perguntas
 } 
 
