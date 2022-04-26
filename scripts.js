@@ -105,7 +105,7 @@ function selecionarQuizz(elemento){
                 //fazer a mesma logica do abrir perguntas 
  //--------------------------------------------------------------//                
 
- function clicar(elemento){     
+ function clicar(elemento){      
 
     elemento.classList.add("clicado"); 
     const itemSelecionado = document.querySelector(".clicado"); 
@@ -117,11 +117,25 @@ function selecionarQuizz(elemento){
 
     if(itemSelecionado !== null ) { 
         itemSelecionado.classList.remove("clicado");
-    }
+    } 
     
     elemento.classList.remove("esbranquicado"); 
-    elemento.querySelector(".respostas > .opcao > .nome-opcao > h3").style.color="green";
-} 
+    elemento.querySelector(".respostas > .opcao > .nome-opcao > h3").style.color="green";   
+
+    if(naoClicado[(naoClicado.length-1)].querySelector(".clicado") !== null) { 
+        mostrarResultado();
+    } 
+
+    let promise = axios.get("https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes"); 
+
+    promise.then(buscaDados);
+}  
+
+function buscaDados(response) {  
+    const quizCriado = response.data; 
+    console.log(quizCriado);  
+
+}
        
               
 function mostrarResultado(){
@@ -176,7 +190,7 @@ function criarPerguntas(){
         https += url[i];
     } 
 
-   if(titulo.length>=20 && titulo.length<=65 && numPerguntas>=3 && numNiveis>=2 && https === "https://") { 
+   if(titulo.length>=20 && titulo.length<=65 && numPerguntas>=1 && numNiveis>=1 && https === "https://") { 
     document.querySelector(".tela3-parte1").classList.add("escondido");
     document.querySelector(".tela3-parte2").classList.remove("escondido"); 
     alert("Agora criar perguntas"); 
@@ -398,7 +412,8 @@ function voltarHome(){
     document.querySelector(".tela2").classList.add("escondido");
     document.querySelector(".tela1").classList.remove("escondido");
     document.querySelector(".naoCriou").classList.add("escondido");
-    document.querySelector(".criou").classList.remove("escondido");    
+    document.querySelector(".criou").classList.remove("escondido");  
+    document.querySelector(".tela3-parte4").classList.add("escondido");   
 
     let titulo = document.querySelector("input.title").value;   
     let url = document.querySelector("input.url").value;
