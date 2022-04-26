@@ -1,5 +1,4 @@
-let url4 = [];  
-
+let armazenaQuizz = [];  
 
 
 //Funcoes da tela 1
@@ -422,5 +421,26 @@ function voltarHome(){
         <img src="${url}" onclick="selecionarQuizz(this)"/> 
         <h2>${titulo}</h2>
         `;
+} 
+
+function postaQuizz() {   
+    let numPerguntas = Number(document.querySelector("input.numPerguntas").value);
+    let questoes = [];  
+    let niveis = []
+
+    for(let i=0; i<numPerguntas; i++) { 
+        questoes[i] = { 
+            
+        } 
+    }
+
+    armazenaQuizz = { 
+        title: document.querySelector("input.title").value,
+	    image: document.querySelector("input.url").value,
+	    questions: questoes, 
+        levels : niveis
+    }; 
+
+    let promise = axios.post("",armazenaQuizz);
 }
     //mandar pra tela 1
