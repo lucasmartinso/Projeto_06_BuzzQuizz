@@ -1,5 +1,65 @@
 let armazenaQuizz = [];  
+let quiz=[]
+let questions=[]
+let answers=[]
+let url4 = [];  
 
+/*----------------------------------------------------------------------------- */
+//FUNCOES DA API
+
+function mandarQuiz(){
+    const quiz = {
+        title:document.querySelector("input.title").value ,
+        image: "",
+        questions: [],
+        levels: []
+        };
+    let promise=axios.post("https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes",quiz)
+    promise.then(mandarSucesso)
+    promise.catch(mandarErro)
+    quizCriado(response.data.id)
+
+}
+function mandarSucesso(){
+console.log("deu bom")
+
+
+}
+function mandarErro(){
+    console.log("deu ruim")
+}
+function quizCriado(){
+    
+}
+function carregarQuizz(){
+    let promise = axios.get('https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes')
+   
+     promise.then(carregarSucesso)
+     promise.catch(carregarErro)
+ }
+         function carregarSucesso(response)
+         {  
+          let quiz= response.data;
+          console
+           let lista =document.querySelector(".quizzes.prontos");
+           lista.innerHTML="";
+           
+                 for(let i=0;i<6;i++){
+                     lista.innerHTML+=
+                     `<div id="${response.data[i].id}" class="quizz" data-identifier="quizz-card" onclick="selecionarQuizz(this)">
+                     <img src="${response.data[i].image}" >
+                     <h2>${response.data[i].title}</h2>
+                     </div>`              
+         }  
+         quiz.sort(comparador)
+       
+         }
+         function comparador(){
+             return Math.random() - 0.5;
+         }   
+         function carregarErro(){
+             alert("deu ruim")
+         }  
 
 //Funcoes da tela 1
 function criaQuizz() {  
@@ -8,33 +68,10 @@ function criaQuizz() {
     document.querySelector(".corpoTela3").classList.remove("escondido");
     document.querySelector(".tela3-parte1").classList.remove("escondido");
     //Mandar pra tela 3
-} 
-
-function carregarQuizz(){
-   let promise = axios.get('https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes')
-  
-    promise.then(carregarSucesso)
-    promise.catch(carregarErro)
 }
-        function carregarSucesso(response)
-        {  
-         let quiz= response.data;
-          let lista =document.querySelector(".quizzes.prontos");
-          lista.innerHTML="";
-          
-                for(let i=0;i<6;i++){
-                    lista.innerHTML+=
-                    `<div id="${response.data[i].id}" class="quizz" data-identifier="quizz-card" onclick="selecionarQuizz(this)">
-                    <img src="${response.data[i].image}" >
-                    <h2>${response.data[i].title}</h2>
-                    </div>`              
-        }  
-        quiz.sort(comparador)
-      
-        }
-        function comparador(){
-            return Math.random() - 0.5;
-        }         
+
+
+   
 
 //FUNCOES PARA CLICAR E INICIAR UM QUIZZ ESPECIFICO
 function selecionarQuizz(elemento){
@@ -57,6 +94,10 @@ function selecionarQuizz(elemento){
             document.querySelector(".tela2").classList.remove("escondido") 
 
         }
+        function selecionarErro(){
+            console.log("deu ruim")
+        }
+        
          function renderizarCima(elemento){ 
             pegarPerguntas(elemento) 
                     let selecionado =document.querySelector(".parteDeCima")
@@ -98,78 +139,82 @@ function selecionarQuizz(elemento){
            </div> `
                 }
                
-            }  
-            
-        }
-                //fazer a mesma logica do abrir perguntas 
- //--------------------------------------------------------------//                
+            }
+          
+           }
+             
+          
+
+//Funcoes da tela 2
+
 
  function clicar(elemento){      
 
     elemento.classList.add("clicado"); 
+   
     const itemSelecionado = document.querySelector(".clicado"); 
-    const naoClicado = document.querySelectorAll(".opcao");    
-    for(let i=0; i<naoClicado.length; i++) {
-        naoClicado[i].classList.add("esbranquicado");  
-        naoClicado[i].querySelector(".respostas > .opcao > .nome-opcao > h3").style.color="red";
-    } 
-
-    if(itemSelecionado !== null ) { 
-        itemSelecionado.classList.remove("clicado");
-    } 
+    const naoClicado = document.querySelectorAll(".opcao"); 
+  
+   
+        for(let i=0; i<naoClicado.length; i++) {
+            naoClicado[i].classList.add("esbranquicado");  
+            naoClicado[i].querySelector(".respostas > .opcao > .nome-opcao > h3").style.color="red";
+        } 
     
-    elemento.classList.remove("esbranquicado"); 
-    elemento.querySelector(".respostas > .opcao > .nome-opcao > h3").style.color="green";   
+        if(itemSelecionado !== null ) { 
+            itemSelecionado.classList.remove("clicado");
+        } 
+        
+        elemento.classList.remove("esbranquicado"); 
+        elemento.querySelector(".respostas > .opcao > .nome-opcao > h3").style.color="green";   
+    
+        if(naoClicado[(naoClicado.length-1)].querySelector(".clicado") !== null) { 
+            mostrarResultado();
+        } 
 
-    if(naoClicado[(naoClicado.length-1)].querySelector(".clicado") !== null) { 
-        mostrarResultado();
-    } 
 
     let promise = axios.get("https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes"); 
 
     promise.then(buscaDados);
-}  
+} 
 
 function buscaDados(response) {  
     const quizCriado = response.data; 
     console.log(quizCriado);  
 
 }
-       
-              
+            
 function mostrarResultado(){
     //se todas as questoes foram marcadas
     document.querySelector(".final").classList.remove("escondido")
     document.querySelector(".botoes").classList.remove("escondido")
 }
-/*FUNCAO CLICAR:
--Ao clicar num elemento todos os outros devem adquirir a classe esbranquicado
--So pode haver 1 item clicado 
-
-*/ 
-
-function selecionarErro(){
-    console.log("deu ruim")
-}
-function carregarErro(){
-    alert("deu ruim")
-}
-
- function criaQuizz() {  
-            alert("Vamos criar um quizz");
-            document.querySelector(".tela1").classList.add("escondido");
-            document.querySelector(".corpoTela3").classList.remove("escondido");
-            document.querySelector(".tela3-parte1").classList.remove("escondido");
-            //Mandar pra tela 3
-}
-//Funcoes da tela 2
 function reiniciarQuizz(){
     alert("Reiniciando quizz")
+    let promessa= axios.get(`https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes/${id}`)
+    promessa.then(carregarSucesso)
     const elemento =document.querySelector(".tela2")
     elemento.scrollIntoView()
   
 } 
+function voltarHome(){
+    alert("voltando pra home")
+    document.querySelector(".tela3-parte4").classList.add("escondido");
+    document.querySelector(".tela1").classList.remove("escondido");
+    document.querySelector(".naoCriou").classList.add("escondido");
+    document.querySelector(".criou").classList.remove("escondido");  
+    document.querySelector(".tela3-parte4").classList.add("escondido");   
 
+    let titulo = document.querySelector("input.title").value;   
+    let url = document.querySelector("input.url").value;
+    const lista = document.querySelector("quizzes.usuario").innerHTML=""; 
+    lista.innerHTML = `<div class="quizz">   
+        <img src="${url}"/> 
+        <h2>${titulo}</h2>
+        </div>
+        `
+        console.log(lista)
+}
 
 //Funcoes da tela 3
 
@@ -406,14 +451,15 @@ function acessarQuizz(){
     //mandar pra tela 2
 
 }
+
 function voltarHome(){
     alert("voltando pra home")
-    document.querySelector(".tela2").classList.add("escondido");
+    document.querySelector(".tela3-parte4").classList.add("escondido");
     document.querySelector(".tela1").classList.remove("escondido");
     document.querySelector(".naoCriou").classList.add("escondido");
     document.querySelector(".criou").classList.remove("escondido");  
-    document.querySelector(".tela3-parte4").classList.add("escondido");   
-
+    document.querySelector(".tela3-parte4").classList.add("escondido"); 
+    
     let titulo = document.querySelector("input.title").value;   
     let url = document.querySelector("input.url").value;
     const lista = document.querySelector(".criou > .quizzes"); 
