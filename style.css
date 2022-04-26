@@ -258,7 +258,7 @@ li.bloco > .formacao{
     margin-bottom: 15px;
     word-break: break-word;
 }
-.imagem-quizz{
+.imagem-quizz img{
     width: 500px;
     height: 266px;
     background-color: rgb(67, 78, 78); 
@@ -470,7 +470,7 @@ background-color: white;
 opacity: 0.6;
 } 
 
-.criou > .quizzes > img { 
+.tela1 .criou > .quizzes > img { 
     width: 340px;
     height: 181px;  
     border-radius: 5px; 
@@ -597,10 +597,12 @@ opacity: 0.6;
              width: 100%;
          }
         /*tela3-parte 4:*/
-        .imagem-quizz{
+        .imagem-quizz img{
             width: 340px;
-            height: 181px;
-        }
+            height: 181px; 
+            object-fit: cover;
+        } 
+
         .imagem-quizz h2{
             font-size: 19px;
             word-break: break-word;
