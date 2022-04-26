@@ -25,6 +25,7 @@ function carregarQuizz(){
         function carregarSucesso(response)
         {  
          let quiz= response.data;
+         console
           let lista =document.querySelector(".quizzes.prontos");
           lista.innerHTML="";
           
@@ -40,7 +41,10 @@ function carregarQuizz(){
         }
         function comparador(){
             return Math.random() - 0.5;
-        }         
+        }   
+        function carregarErro(){
+            alert("deu ruim")
+        }      
 
 //FUNCOES PARA CLICAR E INICIAR UM QUIZZ ESPECIFICO
 function selecionarQuizz(elemento){
@@ -60,6 +64,10 @@ function selecionarQuizz(elemento){
             document.querySelector(".tela2").classList.remove("escondido")
 
         }
+        function selecionarErro(){
+            console.log("deu ruim")
+        }
+        
          function renderizarCima(elemento){ 
             pegarPerguntas(elemento) 
                     let selecionado =document.querySelector(".parteDeCima")
@@ -95,12 +103,7 @@ function selecionarQuizz(elemento){
                   respostas[i].innerHTML+=` 
                    <div class="opcao resposta${i}"   onclick="clicar(this)">
                   <img src="${elemento.questions[i].answers[j].image}" />
-                  <div  const clicado = document.querySelector(".opcao.clicado") 
-                  if(clicado != null){
-                      clicado.classList.remove("clicado")     
-                  
-                  }
-                  elemento.classList.add("clicado")class="nome-opcao" ><h3>${elemento.questions[i].answers[j].text}</h3>
+                  <div class="nome-opcao" ><h3>${elemento.questions[i].answers[j].text}</h3>
                   </div>  
            </div> `
                 }
@@ -110,57 +113,44 @@ function selecionarQuizz(elemento){
            }
              
  //--------------------------------------------------------------//               
-       
-              
 
-/*FUNCAO CLICAR:
--Ao clicar num elemento todos os outros devem adquirir a classe esbranquicado
--So pode haver 1 item clicado 
-
-*/
-function clicar(elemento){
-  
-            console.log(elemento)
-            const clicado = document.querySelector(".opcao.clicado") 
-            if(clicado != null){
-                clicado.classList.remove("clicado")     
-            
-            }
-            elemento.classList.add("clicado")
-
-    //fazer a mesma logica do abrir perguntas
-} 
-function mostrarResultado(){
-    //se todas as questoes foram marcadas
-    document.querySelector(".final").classList.remove("escondido")
-    document.querySelector(".botoes").classList.remove("escondido")
-}
-
-
-
-function selecionarErro(){
-    console.log("deu ruim")
-}
-function carregarErro(){
-    alert("deu ruim")
-}
-
- function criaQuizz() {  
-            alert("Vamos criar um quizz");
-            document.querySelector(".tela1").classList.add("escondido");
-            document.querySelector(".corpoTela3").classList.remove("escondido");
-            document.querySelector(".tela3-parte1").classList.remove("escondido");
-            //Mandar pra tela 3
-}
 //Funcoes da tela 2
 function reiniciarQuizz(){
     alert("Reiniciando quizz")
+    let promessa= axios.get(`https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes/${id}`)
+    promessa.then(carregarSucesso)
     const elemento =document.querySelector(".tela2")
     elemento.scrollIntoView()
   
 } 
+/*FUNCAO CLICAR:
+-Ao clicar num elemento todos os outros devem adquirir a classe "esbranquicado"
+-So pode haver 1 item clicado 
+-Quando terminar de responder todas as perguntas deve chamar a funcao mostrarResultado()
 
+*/
+function clicar(elemento){
+  
+    
+    const clicado = document.querySelector(".clicado") 
+   
+    if(clicado != null){
+        clicado.classList.remove("clicado")  
+       
+    
+    }
+    elemento.classList.add("clicado")
+   
+   
+//fazer a mesma logica do abrir perguntas
+} 
+function mostrarResultado(){
+//se todas as questoes foram marcadas
+document.querySelector(".final").classList.remove("escondido")
+document.querySelector(".botoes").classList.remove("escondido")
+}
 
+ //--------------------------------------------------------------//   
 //Funcoes da tela 3
 
 function criarPerguntas(){  
@@ -396,7 +386,7 @@ function voltarHome(){
     document.querySelector(".criou").classList.remove("escondido");  
 }
 /*----------------------------------------------------------------------------- */
-
+//Mandar o quizz pra API
 
 function mandarQuiz(){
     const quiz = {
@@ -411,7 +401,6 @@ function mandarQuiz(){
     quizCriado(response.data.id)
 
 }
-
 function mandarSucesso(){
 console.log("deu bom")
 
@@ -420,8 +409,6 @@ console.log("deu bom")
 function mandarErro(){
     console.log("deu ruim")
 }
-
-
 function quizCriado(){
     
 }
