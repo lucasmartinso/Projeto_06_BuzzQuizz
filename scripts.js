@@ -55,7 +55,7 @@ function selecionarQuizz(elemento){
             renderizarCima (elemento) 
           
             document.querySelector(".tela1").classList.add("escondido")
-            document.querySelector(".tela2").classList.remove("escondido")
+            document.querySelector(".tela2").classList.remove("escondido") 
 
         }
          function renderizarCima(elemento){ 
@@ -101,23 +101,11 @@ function selecionarQuizz(elemento){
                
             }  
             
-           }
-             
- //--------------------------------------------------------------//               
-       
-              
-function mostrarResultado(){
-    //se todas as questoes foram marcadas
-    document.querySelector(".final").classList.remove("escondido")
-    document.querySelector(".botoes").classList.remove("escondido")
-}
-/*FUNCAO CLICAR:
--Ao clicar num elemento todos os outros devem adquirir a classe esbranquicado
--So pode haver 1 item clicado 
+        }
+                //fazer a mesma logica do abrir perguntas 
+ //--------------------------------------------------------------//                
 
-*/ 
-
-function clicar(elemento){     
+ function clicar(elemento){     
 
     elemento.classList.add("clicado"); 
     const itemSelecionado = document.querySelector(".clicado"); 
@@ -131,9 +119,21 @@ function clicar(elemento){
         itemSelecionado.classList.remove("clicado");
     }
     
-    elemento.classList.remove("esbranquicado");
-    //fazer a mesma logica do abrir perguntas
+    elemento.classList.remove("esbranquicado"); 
+    elemento.querySelector(".respostas > .opcao > .nome-opcao > h3").style.color="green";
 } 
+       
+              
+function mostrarResultado(){
+    //se todas as questoes foram marcadas
+    document.querySelector(".final").classList.remove("escondido")
+    document.querySelector(".botoes").classList.remove("escondido")
+}
+/*FUNCAO CLICAR:
+-Ao clicar num elemento todos os outros devem adquirir a classe esbranquicado
+-So pode haver 1 item clicado 
+
+*/ 
 
 function selecionarErro(){
     console.log("deu ruim")
